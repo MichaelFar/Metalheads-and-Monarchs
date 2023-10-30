@@ -1,0 +1,69 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvbxgwoo58p56"]
+
+[ext_resource type="Script" path="res://Scripts/RayCastContainer.gd" id="1_6gmkj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_clgiv"]
+
+[node name="RayCastContainer" type="CharacterBody2D"]
+script = ExtResource("1_6gmkj")
+
+[node name="Node2D" type="Node2D" parent="."]
+rotation = 0.785398
+
+[node name="RayTarget7" type="Area2D" parent="Node2D"]
+position = Vector2(60, 0)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/RayTarget7"]
+shape = SubResource("CircleShape2D_clgiv")
+
+[node name="RayTarget10" type="Area2D" parent="Node2D"]
+position = Vector2(0, -60)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/RayTarget10"]
+shape = SubResource("CircleShape2D_clgiv")
+
+[node name="RayTarget11" type="Area2D" parent="Node2D"]
+position = Vector2(0, 60)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/RayTarget11"]
+shape = SubResource("CircleShape2D_clgiv")
+
+[node name="RayTarget12" type="Area2D" parent="Node2D"]
+position = Vector2(-60, 0)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/RayTarget12"]
+shape = SubResource("CircleShape2D_clgiv")
+
+[node name="Node2D2" type="Node2D" parent="."]
+
+[node name="RayTarget7" type="Area2D" parent="Node2D2"]
+position = Vector2(60, 0)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D2/RayTarget7"]
+shape = SubResource("CircleShape2D_clgiv")
+
+[node name="RayTarget10" type="Area2D" parent="Node2D2"]
+position = Vector2(0, -60)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D2/RayTarget10"]
+shape = SubResource("CircleShape2D_clgiv")
+
+[node name="RayTarget11" type="Area2D" parent="Node2D2"]
+position = Vector2(0, 60)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D2/RayTarget11"]
+shape = SubResource("CircleShape2D_clgiv")
+
+[node name="RayTarget12" type="Area2D" parent="Node2D2"]
+position = Vector2(-60, 0)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D2/RayTarget12"]
+shape = SubResource("CircleShape2D_clgiv")

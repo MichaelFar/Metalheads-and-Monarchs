@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://4bn5rkige46i"]
+[gd_scene load_steps=8 format=3 uid="uid://4bn5rkige46i"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_a1pkj"]
 [ext_resource type="Texture2D" uid="uid://d256qrt6qokb" path="res://Sprites/testplayersprite35x35.png" id="2_qkt7p"]
 [ext_resource type="PackedScene" uid="uid://cscwrtnkcq8r5" path="res://Scenes/hurtbox.tscn" id="3_d11rt"]
 [ext_resource type="PackedScene" uid="uid://ch5u5wujtbli8" path="res://Scenes/healthbar.tscn" id="4_4lreh"]
+[ext_resource type="PackedScene" uid="uid://bmjjbqwr57nge" path="res://Scenes/spawner.tscn" id="5_mhis5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3vkrt"]
 radius = 14.0
@@ -48,6 +49,8 @@ offset_left = -18.0
 offset_top = 12.0
 offset_right = 18.0
 offset_bottom = 19.0
+
+[node name="Spawner" parent="." instance=ExtResource("5_mhis5")]
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 

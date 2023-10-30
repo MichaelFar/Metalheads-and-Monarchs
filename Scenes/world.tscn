@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjiifkuumyu4s"]
+[gd_scene load_steps=6 format=3 uid="uid://bjiifkuumyu4s"]
 
 [ext_resource type="Texture2D" uid="uid://bd0kca0a1cr0l" path="res://Sprites/Background.png" id="1_asahw"]
+[ext_resource type="PackedScene" uid="uid://csrn8lk87kt20" path="res://Scenes/block.tscn" id="2_ir4ln"]
 [ext_resource type="Texture2D" uid="uid://crqreufycqcyy" path="res://Sprites/testspriteplayer.png" id="2_u5ojr"]
 [ext_resource type="PackedScene" uid="uid://4bn5rkige46i" path="res://Scenes/player.tscn" id="3_yqwwm"]
 
@@ -17,14 +18,7 @@ position = Vector2(-1, -1)
 scale = Vector2(4.55509, 7.66848)
 texture = ExtResource("1_asahw")
 
-[node name="Block" type="Sprite2D" parent="."]
-position = Vector2(-32, 35)
-texture = ExtResource("2_u5ojr")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Block"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block/StaticBody2D"]
-shape = SubResource("RectangleShape2D_pcdx7")
+[node name="Block" parent="." instance=ExtResource("2_ir4ln")]
 
 [node name="Block2" type="Sprite2D" parent="."]
 position = Vector2(54, 38)

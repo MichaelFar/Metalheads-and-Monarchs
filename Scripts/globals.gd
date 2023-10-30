@@ -1,4 +1,5 @@
 extends Node
 
-var player = null#Reference to player scene 
+var player = null#Reference to player scene
+var currentLevel = null 
 
