@@ -1,16 +1,12 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjiifkuumyu4s"]
 
-[gd_scene load_steps=6 format=3 uid="uid://bjiifkuumyu4s"]
-
+[ext_resource type="Script" path="res://Scripts/level.gd" id="1_1ytxt"]
 [ext_resource type="Texture2D" uid="uid://bd0kca0a1cr0l" path="res://Sprites/Background.png" id="1_asahw"]
 [ext_resource type="PackedScene" uid="uid://csrn8lk87kt20" path="res://Scenes/block.tscn" id="2_ir4ln"]
-
-[ext_resource type="Texture2D" uid="uid://crqreufycqcyy" path="res://Sprites/testspriteplayer.png" id="2_u5ojr"]
-[ext_resource type="PackedScene" uid="uid://4bn5rkige46i" path="res://Scenes/player.tscn" id="3_yqwwm"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pcdx7"]
-size = Vector2(32, 32)
+[ext_resource type="PackedScene" uid="uid://bctihlcscxsex" path="res://Scenes/player.tscn" id="3_yqwwm"]
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_1ytxt")
 
 [node name="Evironment" type="Node2D" parent="."]
 
@@ -20,35 +16,16 @@ position = Vector2(-1, -1)
 scale = Vector2(4.55509, 7.66848)
 texture = ExtResource("1_asahw")
 
-
 [node name="Block" parent="." instance=ExtResource("2_ir4ln")]
-
-
-[node name="Block2" type="Sprite2D" parent="."]
-position = Vector2(54, 38)
-texture = ExtResource("2_u5ojr")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Block2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block2/StaticBody2D"]
-shape = SubResource("RectangleShape2D_pcdx7")
-
-[node name="Block3" type="Sprite2D" parent="."]
-position = Vector2(-32, -22)
-texture = ExtResource("2_u5ojr")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Block3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block3/StaticBody2D"]
-shape = SubResource("RectangleShape2D_pcdx7")
-
-[node name="Block4" type="Sprite2D" parent="."]
-position = Vector2(51, -23)
-texture = ExtResource("2_u5ojr")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Block4"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block4/StaticBody2D"]
-shape = SubResource("RectangleShape2D_pcdx7")
+position = Vector2(-65, 62)
 
 [node name="Player" parent="." instance=ExtResource("3_yqwwm")]
+
+[node name="Block2" parent="." instance=ExtResource("2_ir4ln")]
+position = Vector2(79, 48)
+
+[node name="Block3" parent="." instance=ExtResource("2_ir4ln")]
+position = Vector2(117, -23)
+
+[node name="Block4" parent="." instance=ExtResource("2_ir4ln")]
+position = Vector2(-90, -46)

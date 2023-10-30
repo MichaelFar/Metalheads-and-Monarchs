@@ -13,3 +13,8 @@ collision_layer = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_pcdx7")
+
+[node name="obstacle" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle"]
+shape = SubResource("RectangleShape2D_pcdx7")

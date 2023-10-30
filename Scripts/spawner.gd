@@ -22,19 +22,23 @@ func update_spawn_circle():
 	var viewportRect = get_viewport_rect()
 	var viewportRadius = 0.0
 	viewportRadius = viewportRect.size.x if viewportRect.size.x > viewportRect.size.y else viewportRect.size.y
-	spawnCircle.shape.radius = viewportRadius / 2.0
+	spawnCircle.shape.radius = viewportRadius / 1.5
 	spawn_magnitude = spawnCircle.shape.radius
 	
 func spawn_enemies(enemyList):
 	var randObj = RandomNumberGenerator.new()
+	
 	for i in enemyList:
+		
 		var resource = enemyPreloader.get_resource(i)
 		var amount = randObj.randi_range(1, 5)
+		
 		for j in amount:
+			
 			var randx = randObj.randf_range(-1.0,1.0)
 			var randy = randObj.randf_range(-1.0,1.0)
 			var direction = Vector2(randx,randy).normalized()
 			var enemy = resource.instantiate()
 			Globals.currentLevel.add_child(enemy)
-			enemy.position = spawn_magnitude * direction
+			enemy.global_position = spawn_magnitude * direction
 		
