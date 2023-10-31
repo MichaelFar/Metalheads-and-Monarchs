@@ -11,27 +11,30 @@ var playerNode = null
 @export var health = 100.0
 @export var healthbar : ProgressBar
 
+var shouldStop = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	playerNode = get_parent().playerNode
 	healthbar.value = health
+	Globals.game_timer.game_complete.connect(freeze)
 	random_speed()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if(health <= 0.0):
+		Globals.game_timer.totalEnemiesDefeated += 1
 		queue_free()
-	
-	var destination = playerNode.global_position - global_position 
-	
-	destination = destination.normalized()
-	if(raycast):
-		RayCastContainer.supplied_direction = destination
-		#print("Supplied direction is " + str(destination))
-		destination = RayCastContainer.suggestedVector
-	#print("Resulting direction is " + str(destination))
-	sprite.look_at(playerNode.global_position)
-	velocity = velocity.move_toward(destination * max_speed, delta * acceleration)
-	move_and_slide()
+	if(!shouldStop):
+		var destination = playerNode.global_position - global_position 
+		
+		destination = destination.normalized()
+		if(raycast):
+			RayCastContainer.supplied_direction = destination
+			#print("Supplied direction is " + str(destination))
+			destination = RayCastContainer.suggestedVector
+		#print("Resulting direction is " + str(destination))
+		sprite.look_at(playerNode.global_position)
+		velocity = velocity.move_toward(destination * max_speed, delta * acceleration)
+		move_and_slide()
 
 
 
@@ -49,4 +52,5 @@ func random_speed():
 	var randObj = RandomNumberGenerator.new()
 	max_speed = randObj.randf_range(max_speed - 100.0, max_speed + 200.0)
 	
-	
+func freeze():
+	shouldStop = true
