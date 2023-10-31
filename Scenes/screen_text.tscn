@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://bo7atiusshn2u"]
+
+[ext_resource type="Script" path="res://screen_text.gd" id="1_d34rc"]
+
+[sub_resource type="SystemFont" id="SystemFont_7kyti"]
+
+[sub_resource type="Theme" id="Theme_p74ap"]
+default_font = SubResource("SystemFont_7kyti")
+default_font_size = 22
+
+[node name="ScreenText" type="Control" node_paths=PackedStringArray("game_timer", "text_node")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_p74ap")
+script = ExtResource("1_d34rc")
+game_timer = NodePath("Timer")
+text_node = NodePath("RichTextLabel")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+texture_filter = 1
+layout_mode = 2
+offset_left = -157.0
+offset_right = 156.0
+offset_bottom = 145.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.08
+bbcode_enabled = true
+text = "[center]test[/center]"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

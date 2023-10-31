@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 var playerNode = null
 
-@export var acceleration = 600
-@export var max_speed = 200
+@export var acceleration = 600.0
+@export var max_speed = 200.0
 @export var damage = 10
 @export var RayCastContainer : CharacterBody2D
 @export var raycast = true
@@ -15,9 +15,12 @@ var playerNode = null
 func _ready():
 	playerNode = get_parent().playerNode
 	healthbar.value = health
-
+	random_speed()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	if(health <= 0.0):
+		queue_free()
+	
 	var destination = playerNode.global_position - global_position 
 	
 	destination = destination.normalized()
@@ -41,3 +44,9 @@ func _on_hurtbox_area_entered(area):
 		
 func get_node_type():
 	return "enemy"
+	
+func random_speed():
+	var randObj = RandomNumberGenerator.new()
+	max_speed = randObj.randf_range(max_speed - 100.0, max_speed + 200.0)
+	
+	

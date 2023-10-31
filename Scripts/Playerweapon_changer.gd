@@ -14,17 +14,18 @@ func _ready():
 	current_weapon = bulletsList.get_resource(weapons[current_weapon_index])
 	
 func _process(delta):
-	if Input.is_action_pressed("Shoot") and cooldown_timer.is_stopped():
-		shoot()
+	if(get_parent().health >= 0.0):
+		if Input.is_action_pressed("Shoot") and cooldown_timer.is_stopped():
+			shoot()
+			
+		if Input.is_action_just_pressed("Switch_weapon_up"):
+			var direction = 1
+			switch_weapon(direction)
 		
-	if Input.is_action_just_pressed("Switch_weapon_up"):
-		var direction = 1
-		switch_weapon(direction)
-	
-	
-	if Input.is_action_just_pressed("Switch_weapon_down"):
-		var direction = -1 
-		switch_weapon(direction)
+		
+		if Input.is_action_just_pressed("Switch_weapon_down"):
+			var direction = -1 
+			switch_weapon(direction)
 	
 	
 func switch_weapon(direction):

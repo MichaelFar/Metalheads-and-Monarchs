@@ -6,15 +6,18 @@ extends Area2D
 var spawn_magnitude = 0.0 #Magnitude of the spawn point vector
 var spawn_direction = Vector2.ZERO
 var enemy_list = []
+var spawnMin = 1
+var spawnMax = 5
 
 func _ready():
 	enemy_list = enemyPreloader.get_resource_list()
 	get_viewport().size_changed.connect(update_spawn_circle)
+	Globals.spawner = self
 	update_spawn_circle()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_released("spawn"):
-		spawn_enemies(enemy_list)
+		spawn_enemies()
 
 
 func update_spawn_circle():
@@ -25,13 +28,13 @@ func update_spawn_circle():
 	spawnCircle.shape.radius = viewportRadius / 1.5
 	spawn_magnitude = spawnCircle.shape.radius
 	
-func spawn_enemies(enemyList):
+func spawn_enemies():
 	var randObj = RandomNumberGenerator.new()
 	
-	for i in enemyList:
+	for i in enemy_list:
 		
 		var resource = enemyPreloader.get_resource(i)
-		var amount = randObj.randi_range(1, 5)
+		var amount = randObj.randi_range(spawnMin, spawnMax)
 		
 		for j in amount:
 			
