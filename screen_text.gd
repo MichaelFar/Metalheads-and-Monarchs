@@ -55,3 +55,4 @@ func game_over():
 	text_node.text = "GAME OVER \n Your final time was: " + update_text()
 	if(!playerDied):
 		text_node.text = "GAME COMPLETE!!! \n Total Enemies Defeated: " + str(totalEnemiesDefeated)
+	

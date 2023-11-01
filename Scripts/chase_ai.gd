@@ -14,9 +14,10 @@ var playerNode = null
 var shouldStop = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	playerNode = get_parent().playerNode
+	playerNode = Globals.player
 	healthbar.value = health
 	Globals.game_timer.game_complete.connect(freeze)
+	Globals.activeEnemies.append(self)
 	random_speed()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -29,9 +30,9 @@ func _physics_process(delta):
 		destination = destination.normalized()
 		if(raycast):
 			RayCastContainer.supplied_direction = destination
-			#print("Supplied direction is " + str(destination))
+			
 			destination = RayCastContainer.suggestedVector
-		#print("Resulting direction is " + str(destination))
+		
 		sprite.look_at(playerNode.global_position)
 		velocity = velocity.move_toward(destination * max_speed, delta * acceleration)
 		move_and_slide()

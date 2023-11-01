@@ -43,5 +43,5 @@ func spawn_enemies():
 			var direction = Vector2(randx,randy).normalized()
 			var enemy = resource.instantiate()
 			Globals.currentLevel.add_child(enemy)
-			enemy.global_position = spawn_magnitude * direction
+			enemy.global_position = (spawn_magnitude * direction ) + global_position
 		
