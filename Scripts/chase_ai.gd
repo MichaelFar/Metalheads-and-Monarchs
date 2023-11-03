@@ -10,16 +10,24 @@ var playerNode = null
 @export var sprite : Sprite2D
 @export var health = 100.0
 @export var healthbar : ProgressBar
+@export var animationPlayer : AnimationPlayer
 
+var frame = 0
 var shouldStop = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	playerNode = get_parent().playerNode
 	healthbar.value = health
 	Globals.game_timer.game_complete.connect(freeze)
+	Globals.activeEnemies.append(self)
+	
 	random_speed()
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	frame += 1
+	if(frame == 1):
+		animationPlayer.play("walk")
 	if(health <= 0.0):
 		Globals.game_timer.totalEnemiesDefeated += 1
 		Globals.activeEnemies.pop_at(Globals.activeEnemies.find(self))
