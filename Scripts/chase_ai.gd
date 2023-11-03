@@ -23,6 +23,7 @@ func _ready():
 func _physics_process(delta):
 	if(health <= 0.0):
 		Globals.game_timer.totalEnemiesDefeated += 1
+		Globals.activeEnemies.pop_at(Globals.activeEnemies.find(self))
 		queue_free()
 	if(!shouldStop):
 		var destination = playerNode.global_position - global_position 
