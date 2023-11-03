@@ -15,6 +15,7 @@ script = ExtResource("1_xn5p2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(0.376471, 0.376471, 1, 1)
+z_index = -1
 position = Vector2(-2.98023e-07, -0.5)
 rotation = 1.5708
 scale = Vector2(0.5, 0.71875)
@@ -24,7 +25,8 @@ texture = ExtResource("2_604b7")
 one_shot = true
 
 [node name="Hitbox" parent="." instance=ExtResource("3_kn6x5")]
-collision_mask = 9
+collision_layer = 2
+collision_mask = 8
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 rotation = 1.5708

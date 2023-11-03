@@ -41,6 +41,7 @@ func _physics_process(delta):
 
 func _on_hurtbox_area_entered(area):
 	if(area.name == "Hitbox" && !area.owner.has_method("get_node_type")):
+		
 		print("Hit enemy")
 		health -= area.get_parent().damage
 		healthbar.value = health

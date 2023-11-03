@@ -37,7 +37,6 @@ vframes = 2
 frame = 1
 
 [node name="Gun_offset" type="Marker2D" parent="Graphics"]
-position = Vector2(-0.0318352, -23)
 rotation = -1.5767
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Graphics/Gun_offset"]
