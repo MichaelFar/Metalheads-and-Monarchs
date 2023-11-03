@@ -29,3 +29,5 @@ func _on_hurtbox_area_entered(area):
 		healthbar.healthbar.value -= area.get_parent().damage
 		health -= area.get_parent().damage
 
+func get_node_type():
+	return "player"
