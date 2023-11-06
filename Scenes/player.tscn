@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://bctihlcscxsex"]
+[gd_scene load_steps=12 format=3 uid="uid://bctihlcscxsex"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_a1pkj"]
 [ext_resource type="Texture2D" uid="uid://byum858vjms7k" path="res://Sprites/Monarch 10_27.png" id="2_s88yn"]
 [ext_resource type="PackedScene" uid="uid://bo7atiusshn2u" path="res://Scenes/screen_text.tscn" id="3_s6lj3"]
 [ext_resource type="PackedScene" uid="uid://qsyon56njct6" path="res://Scenes/playerweapon_changer.tscn" id="4_5tbpb"]
 [ext_resource type="PackedScene" uid="uid://ccehvpa1qxbu8" path="res://Projectiles/bullet.tscn" id="4_k33jy"]
-[ext_resource type="PackedScene" uid="uid://blhxraqgaht4t" path="res://test_bullet_2.tscn" id="7_t8rsk"]
 [ext_resource type="PackedScene" uid="uid://cscwrtnkcq8r5" path="res://Scenes/hurtbox.tscn" id="7_w5vy5"]
 [ext_resource type="PackedScene" uid="uid://ch5u5wujtbli8" path="res://Scenes/healthbar.tscn" id="8_h3l8k"]
 [ext_resource type="PackedScene" uid="uid://bmjjbqwr57nge" path="res://Scenes/spawner.tscn" id="9_5t8gu"]
@@ -56,11 +55,11 @@ rotation = -0.00138414
 shape = SubResource("CircleShape2D_3vkrt")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -5)
 
 [node name="ScreenText" parent="Camera2D" instance=ExtResource("3_s6lj3")]
 offset_top = 20.0
 offset_bottom = 20.0
-metadata/_edit_use_anchors_ = true
 
 [node name="Cooldown_timer" type="Timer" parent="."]
 wait_time = 0.291
@@ -72,17 +71,15 @@ cooldown_timer = NodePath("../Cooldown_timer")
 gun_offset = NodePath("../Graphics/Gun_offset")
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
-resources = [PackedStringArray("bullet", "test_bullet_2"), [ExtResource("4_k33jy"), ExtResource("7_t8rsk")]]
+resources = [PackedStringArray("bullet"), [ExtResource("4_k33jy")]]
 
 [node name="Control" parent="." instance=ExtResource("8_h3l8k")]
-metadata/_edit_use_anchors_ = true
 
 [node name="ProgressBar" parent="Control" index="0"]
 offset_left = -18.0
 offset_top = 35.0
 offset_right = 18.0
 offset_bottom = 42.0
-metadata/_edit_use_anchors_ = true
 
 [node name="Spawner" parent="." instance=ExtResource("9_5t8gu")]
 

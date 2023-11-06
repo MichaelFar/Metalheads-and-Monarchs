@@ -1,13 +1,12 @@
 extends Node
 
 var player = null#Reference to player scene
-var currentLevel = null
+var currentLevel = null 
 var spawner = null
 var game_timer = null
 var activeEnemies = []
 
 func reset_game():
-	
 	var newPlayer = preload("res://Scenes/player.tscn")
 	for i in activeEnemies:
 		i.queue_free()

@@ -63,6 +63,8 @@ func _physics_process(delta):
 				print("Shader is now unapplied")
 		move_and_slide()
 
+
+
 func _on_hurtbox_area_entered(area):
 	if(area.name == "Hitbox" && !area.owner.has_method("get_node_type")):
 		
