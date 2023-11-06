@@ -13,7 +13,9 @@ var minutes = totalTimeSec / 60
 var seconds = 0
 var playerDied = false
 var endGame = false
+var frame = 0
 signal game_complete
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#position = Vector2(0.0, get_viewport().size.y)
@@ -23,8 +25,11 @@ func _ready():
 	
 
 func _process(delta):
-	if(totalTimeSec == maxTime):
+	frame += 1
+	if(frame == 1):
 		Globals.player.has_died.connect(game_over)
+	
+		
 func _on_timer_timeout():
 	if(!playerDied && !endGame):
 		totalTimeSec -= 1
@@ -55,3 +60,4 @@ func game_over():
 	text_node.text = "GAME OVER \n Your final time was: " + update_text()
 	if(!playerDied):
 		text_node.text = "GAME COMPLETE!!! \n Total Enemies Defeated: " + str(totalEnemiesDefeated)
+	

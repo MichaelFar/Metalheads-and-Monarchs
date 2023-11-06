@@ -15,6 +15,3 @@ z_index = -1
 position = Vector2(4, 2)
 scale = Vector2(1.86723, 2.40217)
 texture = ExtResource("3_ewtwn")
-
-[node name="ChaseAI" parent="." instance=ExtResource("4_dk3rr")]
-position = Vector2(44, 34)

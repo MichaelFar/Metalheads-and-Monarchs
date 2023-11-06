@@ -30,18 +30,18 @@ func update_spawn_circle():
 	
 func spawn_enemies():
 	var randObj = RandomNumberGenerator.new()
-	
-	for i in enemy_list:
-		
-		var resource = enemyPreloader.get_resource(i)
-		var amount = randObj.randi_range(spawnMin, spawnMax)
-		
-		for j in amount:
+	if(Globals.activeEnemies.size() < 30):
+		for i in enemy_list:
 			
-			var randx = randObj.randf_range(-1.0,1.0)
-			var randy = randObj.randf_range(-1.0,1.0)
-			var direction = Vector2(randx,randy).normalized()
-			var enemy = resource.instantiate()
-			Globals.currentLevel.add_child(enemy)
-			enemy.global_position = spawn_magnitude * direction
+			var resource = enemyPreloader.get_resource(i)
+			var amount = randObj.randi_range(spawnMin, spawnMax)
+			
+			for j in amount:
+				
+				var randx = randObj.randf_range(-1.0,1.0)
+				var randy = randObj.randf_range(-1.0,1.0)
+				var direction = Vector2(randx,randy).normalized()
+				var enemy = resource.instantiate()
+				Globals.currentLevel.add_child(enemy)
+				enemy.global_position = (spawn_magnitude * direction ) + global_position
 		

@@ -10,7 +10,7 @@ signal has_died
 
 func _ready():
 	healthbar.healthbar.value = health
-
+	Globals.player = self
 
 func _physics_process(delta):
 	if(health >= 0.0):
