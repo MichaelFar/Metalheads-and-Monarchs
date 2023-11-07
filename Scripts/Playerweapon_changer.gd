@@ -43,4 +43,5 @@ func shoot():
 	var p = current_weapon.instantiate()
 	Globals.currentLevel.add_child(p)
 	p.global_transform = gun_offset.global_transform
+	cooldown_timer.wait_time = p.cooldown
 	cooldown_timer.start()

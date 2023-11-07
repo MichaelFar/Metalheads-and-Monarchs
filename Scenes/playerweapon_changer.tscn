@@ -2,9 +2,6 @@
 
 [ext_resource type="Script" path="res://Scripts/Playerweapon_changer.gd" id="1_gyrn8"]
 
-[node name="Playerweapon_changer" type="Node2D" node_paths=PackedStringArray("bulletsList", "cooldown_timer", "gun_offset")]
+[node name="Playerweapon_changer" type="Node2D"]
 position = Vector2(0, 1)
 script = ExtResource("1_gyrn8")
-bulletsList = NodePath("")
-cooldown_timer = NodePath("")
-gun_offset = NodePath("")
