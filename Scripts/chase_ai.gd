@@ -49,11 +49,16 @@ func _physics_process(delta):
 
 func _on_hurtbox_area_entered(area):
 	if(area.name == "Hitbox" && !area.owner.has_method("get_node_type")):
-		
+		var hasKB = area.get_parent().has_KB
 		print("Hit enemy")
 		health -= area.get_parent().damage
 		healthbar.value = health
-		
+		velocity = area.transform.x * (max_speed * area.get_parent().KBStrength / 3.0) if hasKB else velocity
+		set_shader_time()
+		material.set_shader_parameter("applied", true)
+		KBFrames = 0
+		KBApplied = true
+		print("Shader is now applied")
 		
 func get_node_type():
 	return "enemy"

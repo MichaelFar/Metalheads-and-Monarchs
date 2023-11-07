@@ -1,8 +1,14 @@
 extends CharacterBody2D
+
+class_name bullet
+
 @export var speed = 2500
 
 @export var damage = 10.0
-
+@export var spreadRange : float = 250
+@export var KBStrength = 0.5 #This is multiplied by the enemy's max speed to get knockback value
+@export var cooldown = 0.3
+@export var has_KB = true
 var yInfluence = 0.0
 var xInfluence = 0.0
 var influenceVector = Vector2.ZERO
@@ -17,8 +23,7 @@ func _ready():
 func _physics_process(delta):
 	
 	velocity = transform.x * speed
-	velocity.y += yInfluence
-	velocity.x += yInfluence
+	velocity += influenceVector
 	move_and_slide()
 
 func _on_lifetime_timeout():
