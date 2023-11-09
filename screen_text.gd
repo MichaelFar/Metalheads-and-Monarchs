@@ -38,7 +38,7 @@ func _on_timer_timeout():
 			endGame = true
 			game_over()
 			return
-		if ((maxTime - totalTimeSec) % 10 == 0):
+		if ((maxTime - totalTimeSec) % 10 == 0):# Every 10 seconds
 			Globals.spawner.spawn_enemies()
 			Globals.spawner.spawnMin += 1
 			Globals.spawner.spawnMax += 1

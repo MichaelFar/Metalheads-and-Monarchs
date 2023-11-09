@@ -8,7 +8,7 @@ var playerNode = null
 @export var RayCastContainer : CharacterBody2D
 @export var raycast = true
 @export var sprite : Sprite2D
-@export var health = 100.0
+@export var health = 25.0
 @export var healthbar : ProgressBar
 @export var animationPlayer : AnimationPlayer
 @export var ShaderLoader : ResourcePreloader
