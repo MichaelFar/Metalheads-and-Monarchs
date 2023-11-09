@@ -13,6 +13,7 @@ func _ready():
 		
 		Globals.currentLevel.add_child(bullet_scene)
 		
+		bullet_scene.global_position = Globals.player.graphics.global_position
 		bullet_scene.global_transform = Globals.player.graphics.global_transform
 		
 		bullet_scene.look_at(get_global_mouse_position())

@@ -23,6 +23,7 @@ var shouldStop = false
 func _ready():
 	playerNode = Globals.player
 	healthbar.value = health
+	healthbar.max_value = health
 	Globals.game_timer.game_complete.connect(freeze)
 	Globals.activeEnemies.append(self)
 	shaderList = ShaderLoader.get_resource_list()
@@ -49,18 +50,20 @@ func _physics_process(delta):
 			destination = RayCastContainer.suggestedVector
 		
 		sprite.look_at(playerNode.global_position)
-		
+		KBFrames += 1
 		if(!KBApplied):
 	
 			velocity = velocity.move_toward(destination * max_speed, delta * acceleration)
 		else:
 			
-			KBFrames += 1
+			
 			if(KBFrames / 5 == 1):
 				KBApplied = false
 				
-				material.set_shader_parameter("applied", false)
-				print("Shader is now unapplied")
+				
+		if(KBFrames / 15 == 1):
+			material.set_shader_parameter("applied", false)
+			#print("Shader is now unapplied")
 		move_and_slide()
 
 
