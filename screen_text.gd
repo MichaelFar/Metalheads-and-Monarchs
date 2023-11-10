@@ -42,6 +42,7 @@ func _on_timer_timeout():
 			Globals.spawner.spawn_enemies()
 			Globals.spawner.spawnMin += 1
 			Globals.spawner.spawnMax += 1
+			Globals.spawner.healthMod += 10.0
 		minutes = totalTimeSec / 60
 		seconds = totalTimeSec % 60
 		

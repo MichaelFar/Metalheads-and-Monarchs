@@ -10,19 +10,6 @@ func _ready():
 	tileList = TileResources.get_resource_list()
 	spawn_new_tile(global_position)
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-#func populate_tiles():
-#	var randOBJ = RandomNumberGenerator.new()
-#
-#	for i in range(dimensions.x):
-#		for j in range(dimensions.y):
-#
-#			spawn_new_tile(Vector2(tileSize.x * (i), tileSize.y * (j)))
-			
-
 func spawn_new_tile(g_positionOfNewTile): 
 	var randOBJ = RandomNumberGenerator.new()
 	var randIndex = randOBJ.randi_range(0, tileList.size() - 1)

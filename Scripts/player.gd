@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var healthbar : Control
 @export var health = 100
 @export var graphics : Node2D
+@export var player_weapon_changer : Node2D
 signal has_died
 
 func _ready():

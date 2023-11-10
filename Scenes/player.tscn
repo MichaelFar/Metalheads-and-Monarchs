@@ -23,13 +23,14 @@ radius = 20.0
 radius = 23.0
 height = 46.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("healthbar", "graphics") groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("healthbar", "graphics", "player_weapon_changer") groups=["player"]]
 collision_layer = 2
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_a1pkj")
 healthbar = NodePath("Control")
 graphics = NodePath("Graphics")
+player_weapon_changer = NodePath("Playerweapon_changer")
 
 [node name="Graphics" type="Node2D" parent="."]
 rotation = 0.00138414

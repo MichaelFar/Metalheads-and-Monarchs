@@ -41,7 +41,7 @@ func _on_area_2d_area_shape_entered(area_rid, area, area_shape_index, local_shap
 					mustSpawnNeighbor.emit(i)
 		if area.name == 'Spawner':
 			sprite.show()
-			print("I will display")
+			
 
 func _on_area_2d_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
 	if(area != null):
@@ -51,7 +51,7 @@ func _on_area_2d_area_shape_exited(area_rid, area, area_shape_index, local_shape
 			playerPresent = false
 		if area.name == 'Spawner':
 			sprite.hide()
-			print("I will hide")
+			
 
 func has_all_neighbors():
 	var tile_count = 0

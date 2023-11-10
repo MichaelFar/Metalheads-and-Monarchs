@@ -1,7 +1,6 @@
 extends bullet
 
 
-
 func area_entered(area):
 	if(area.name == "Hurtbox" || area.name == "obstacle"):
 		if(area.has_method("get_node_type")):
