@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8v6kutcxqnj5"]
+
+[ext_resource type="PackedScene" uid="uid://cg288rwaeja6l" path="res://Scenes/tile.tscn" id="1_foi8b"]
+[ext_resource type="Texture2D" uid="uid://bwkhe1y5uf66g" path="res://Sprites/Backround Color Test 4.png" id="2_xiju4"]
+
+[node name="Tile" instance=ExtResource("1_foi8b")]
+
+[node name="BackroundColorTest2" parent="." index="0"]
+texture = ExtResource("2_xiju4")

@@ -46,4 +46,5 @@ func spawn_enemies():
 				Globals.currentLevel.add_child(enemy)
 				enemy.global_position = (spawn_magnitude * direction ) + global_position
 				enemy.health += healthMod
+				
 		

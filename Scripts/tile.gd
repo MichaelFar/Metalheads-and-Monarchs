@@ -28,7 +28,7 @@ func _process(delta):
 	frame += 1
 	if frame >= 1 / delta:
 		frame = 0
-		print("Frame rate is " + str(1 / delta))
+		#print("Frame rate is " + str(1 / delta))
 	
 func _on_area_2d_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	if(area != null):
@@ -71,8 +71,8 @@ func has_all_neighbors():
 		
 		if(result.size() == 0):
 			missing_neighbors.append(i.global_position)
-			print("Added missing neighbor " + str(i.global_position))
-		elif(result[0].collider.name == 'TileArea'):
+			print("Added missing neighbor " + i.name + " "  + str(i.global_position))
+		elif(result.size() == 1):
 			tile_count += 1
 		
 				
