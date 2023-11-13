@@ -6,6 +6,8 @@ extends CharacterBody2D
 @export var healthbar : Control
 @export var health = 100
 @export var graphics : Node2D
+@export var melee : CharacterBody2D
+@export var sprite : Sprite2D
 signal has_died
 
 func _ready():
@@ -21,7 +23,9 @@ func _physics_process(delta):
 		move_and_slide()
 	else:
 		has_died.emit()
-
+		
+	sprite.visible = !melee.visible
+	
 func _on_hurtbox_area_entered(area):
 	
 	if area.name == "Hitbox":

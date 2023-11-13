@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bctihlcscxsex"]
+[gd_scene load_steps=15 format=3 uid="uid://bctihlcscxsex"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_a1pkj"]
 [ext_resource type="Texture2D" uid="uid://byum858vjms7k" path="res://Sprites/Monarch 10_27.png" id="2_s88yn"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://3yymhdfn1svf" path="res://Scenes/shotgun_spawner.tscn" id="8_742ns"]
 [ext_resource type="PackedScene" uid="uid://ch5u5wujtbli8" path="res://Scenes/healthbar.tscn" id="8_h3l8k"]
 [ext_resource type="PackedScene" uid="uid://bmjjbqwr57nge" path="res://Scenes/spawner.tscn" id="9_5t8gu"]
+[ext_resource type="PackedScene" uid="uid://brsr8uqmfym6n" path="res://Scenes/melee.tscn" id="11_4782x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jthtb"]
 
@@ -19,16 +20,17 @@ radius = 26.0192
 [sub_resource type="CircleShape2D" id="CircleShape2D_3vkrt"]
 radius = 20.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("healthbar", "graphics") groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("healthbar", "graphics", "melee", "sprite") groups=["player"]]
 collision_layer = 2
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_a1pkj")
 healthbar = NodePath("Control")
 graphics = NodePath("Graphics")
+melee = NodePath("melee")
+sprite = NodePath("Graphics/Monarch1027")
 
 [node name="Graphics" type="Node2D" parent="."]
-rotation = 0.00138414
 
 [node name="Monarch1027" type="Sprite2D" parent="Graphics"]
 texture_filter = 1
@@ -84,6 +86,9 @@ offset_right = 18.0
 offset_bottom = 42.0
 
 [node name="Spawner" parent="." instance=ExtResource("9_5t8gu")]
+
+[node name="melee" parent="." instance=ExtResource("11_4782x")]
+visible = false
 
 [connection signal="area_entered" from="Graphics/Hurtbox" to="." method="_on_hurtbox_area_entered"]
 

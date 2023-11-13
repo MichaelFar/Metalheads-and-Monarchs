@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://Scripts/chase_ai.gd" id="1_gy7b7"]
 [ext_resource type="PackedScene" uid="uid://cscwrtnkcq8r5" path="res://Scenes/hurtbox.tscn" id="3_xa3rt"]
 [ext_resource type="PackedScene" uid="uid://8r5df653l7cy" path="res://Scenes/hitbox.tscn" id="4_0uwiy"]
+[ext_resource type="Texture2D" uid="uid://b08yl81iy13q1" path="res://Archid Spider Animation Final 11_3 .png" id="4_c0ke3"]
 [ext_resource type="PackedScene" uid="uid://cvbxgwoo58p56" path="res://Scenes/ray_cast_container.tscn" id="5_p7ste"]
-[ext_resource type="Texture2D" uid="uid://b08yl81iy13q1" path="res://Sprites/Archid Spider Animation Final 11_3 .png" id="6_1tjxg"]
 [ext_resource type="PackedScene" uid="uid://ch5u5wujtbli8" path="res://Scenes/healthbar.tscn" id="6_epqxt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_36rl7"]
@@ -79,7 +79,7 @@ shape = SubResource("CapsuleShape2D_36rl7")
 [node name="ArchidSpiderAnimationFinal113" type="Sprite2D" parent="."]
 texture_filter = 1
 use_parent_material = true
-texture = ExtResource("6_1tjxg")
+texture = ExtResource("4_c0ke3")
 hframes = 12
 
 [node name="Hitbox" parent="." instance=ExtResource("4_0uwiy")]
