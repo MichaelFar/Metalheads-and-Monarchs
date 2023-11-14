@@ -12,7 +12,7 @@ area = NodePath("BackroundColorTest2/TileArea")
 TileDetector = NodePath("TileDetector")
 
 [node name="BackroundColorTest2" type="Sprite2D" parent="."]
-z_index = -5
+z_index = -10
 texture = ExtResource("1_f3ry1")
 
 [node name="TileArea" type="Area2D" parent="BackroundColorTest2"]

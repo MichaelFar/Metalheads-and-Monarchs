@@ -4,7 +4,6 @@
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_wldbb"]
 
 [node name="debugAILevel" type="Node2D" node_paths=PackedStringArray("playerNode")]
-y_sort_enabled = true
 script = ExtResource("1_wldbb")
 playerNode = NodePath("Player")
 

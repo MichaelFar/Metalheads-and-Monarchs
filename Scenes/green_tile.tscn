@@ -6,13 +6,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jw545"]
 
 [node name="GreenTile" type="Node2D" node_paths=PackedStringArray("sprite", "area", "TileDetector")]
-z_index = -5
 script = ExtResource("1_tysb1")
 sprite = NodePath("BackroundTestGreen")
 area = NodePath("BackroundTestGreen/TileArea")
 TileDetector = NodePath("TileDetector")
 
 [node name="BackroundTestGreen" type="Sprite2D" parent="."]
+z_index = -10
 texture = ExtResource("2_hwlrf")
 
 [node name="TileArea" type="Area2D" parent="BackroundTestGreen"]

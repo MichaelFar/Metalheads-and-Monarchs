@@ -22,11 +22,9 @@ func _process(delta):
 			var direction = 1
 			switch_weapon(direction)
 		
-		
 		if Input.is_action_just_pressed("Switch_weapon_down"):
 			var direction = -1 
 			switch_weapon(direction)
-	
 	
 func switch_weapon(direction):
 	current_weapon_index += direction

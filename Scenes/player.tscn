@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bctihlcscxsex"]
+[gd_scene load_steps=16 format=3 uid="uid://bctihlcscxsex"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_a1pkj"]
 [ext_resource type="Texture2D" uid="uid://byum858vjms7k" path="res://Sprites/Monarch 10_27.png" id="2_s88yn"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://3yymhdfn1svf" path="res://Scenes/shotgun_spawner.tscn" id="8_742ns"]
 [ext_resource type="PackedScene" uid="uid://ch5u5wujtbli8" path="res://Scenes/healthbar.tscn" id="8_h3l8k"]
 [ext_resource type="PackedScene" uid="uid://bmjjbqwr57nge" path="res://Scenes/spawner.tscn" id="9_5t8gu"]
+[ext_resource type="PackedScene" uid="uid://dbx3maukovag4" path="res://Scenes/legs_animator.tscn" id="11_22m4h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jthtb"]
 
@@ -37,8 +38,9 @@ rotation = 0.00138414
 
 [node name="Monarch1027" type="Sprite2D" parent="Graphics"]
 texture_filter = 1
-rotation = 4.71239
+rotation = -1.5708
 texture = ExtResource("2_s88yn")
+offset = Vector2(12, 0)
 hframes = 2
 vframes = 2
 frame = 1
@@ -50,14 +52,11 @@ rotation = -1.5767
 shape = SubResource("CircleShape2D_jthtb")
 
 [node name="Hurtbox" parent="Graphics" instance=ExtResource("7_w5vy5")]
-rotation = -0.00138414
 
 [node name="CollisionShape2D" parent="Graphics/Hurtbox" index="0"]
-position = Vector2(0, 8)
 shape = SubResource("CircleShape2D_ckaxx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Graphics"]
-position = Vector2(0.0207621, 15)
 rotation = -0.00138414
 shape = SubResource("CircleShape2D_3vkrt")
 
@@ -81,6 +80,7 @@ gun_offset = NodePath("../Graphics/Gun_offset")
 resources = [PackedStringArray("bullet", "bullet_2_test", "shotgun_spawner"), [ExtResource("4_k33jy"), ExtResource("7_q17dw"), ExtResource("8_742ns")]]
 
 [node name="Control" parent="." instance=ExtResource("8_h3l8k")]
+metadata/_edit_use_anchors_ = true
 
 [node name="ProgressBar" parent="Control" index="0"]
 offset_left = -18.0
@@ -93,10 +93,17 @@ offset_bottom = 42.0
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 12)
 shape = SubResource("CapsuleShape2D_8ddgn")
+
+[node name="legs_animator" parent="." node_paths=PackedStringArray("player") instance=ExtResource("11_22m4h")]
+z_index = -5
+player = NodePath("..")
+
+[node name="SprBikerLegsStairsStrip8" parent="legs_animator" index="0"]
+scale = Vector2(2.5, 2.5)
 
 [connection signal="area_entered" from="Graphics/Hurtbox" to="." method="_on_hurtbox_area_entered"]
 
 [editable path="Graphics/Hurtbox"]
 [editable path="Control"]
+[editable path="legs_animator"]
