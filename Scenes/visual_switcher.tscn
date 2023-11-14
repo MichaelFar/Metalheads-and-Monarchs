@@ -1,0 +1,124 @@
+[gd_scene load_steps=8 format=3 uid="uid://q4ihp0pfa5a3"]
+
+[ext_resource type="Script" path="res://Scripts/visual_switcher.gd" id="1_birie"]
+[ext_resource type="Texture2D" uid="uid://dunili5j866g4" path="res://Sprites/Monarch Base SMG Final 11_13.png" id="1_knq04"]
+[ext_resource type="Texture2D" uid="uid://c42t456outohl" path="res://Sprites/Monarch Base Shotgun Final 11_12.png" id="2_dem2u"]
+[ext_resource type="Texture2D" uid="uid://ct1rm65xsf7hb" path="res://Sprites/Monarch Base Pistol Final 11_12.png" id="3_k2l5a"]
+
+[sub_resource type="Animation" id="Animation_mfgnf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MonarchBaseSmgFinal1113:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MonarchBasePistolFinal1112:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MonarchBaseShotgunFinal1112:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_10lfr"]
+resource_name = "shoot"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MonarchBaseSmgFinal1113:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 3, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MonarchBasePistolFinal1112:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 3, 2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MonarchBaseShotgunFinal1112:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 3, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bv7hu"]
+_data = {
+"RESET": SubResource("Animation_mfgnf"),
+"shoot": SubResource("Animation_10lfr")
+}
+
+[node name="visual_switcher" type="CharacterBody2D" node_paths=PackedStringArray("animation_player")]
+script = ExtResource("1_birie")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="MonarchBasePistolFinal1112" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("3_k2l5a")
+offset = Vector2(13, 0)
+hframes = 4
+vframes = 2
+frame = 3
+
+[node name="MonarchBaseSmgFinal1113" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_knq04")
+offset = Vector2(20, 0)
+hframes = 2
+vframes = 2
+frame = 3
+
+[node name="MonarchBaseShotgunFinal1112" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_dem2u")
+offset = Vector2(18, 0)
+hframes = 2
+vframes = 2
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bv7hu")
+}

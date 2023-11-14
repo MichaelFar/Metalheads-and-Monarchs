@@ -54,15 +54,17 @@ func _on_timer_timeout():
 		
 func update_text():
 	
-	var format_string = "[center]{0} : {1}[/center]" + "\n" + "[center]Your score is " + str(totalEnemiesDefeated * 100) + "[/center]"
-
+	var format_string = "[center]{0} : {1}[/center]" + "\n" + "[center]Your score is " + str(totalEnemiesDefeated * 100) + "[/center]" + "\n" + "[center]Time bonus is " + str(((maxTime - totalTimeSec) / 10) * 100) + "[/center]"
+	
 	var actual_string = format_string.format({"0": str(minutes), "1": str(seconds if seconds > 9 else "0" + str(seconds))})
 	
 	return actual_string
 
 func game_over():
 	playerDied = !endGame
-	text_node.text = "GAME OVER \n Your final time was: " + update_text()
+	var totalScoreString = "\n" + "[center]Total Score is " + str((((maxTime - totalTimeSec) / 10) * 100) + totalEnemiesDefeated * 100) + "[/center]"
+	text_node.text = "GAME OVER \n Your final time was: " + update_text() + totalScoreString
+	
 	if(!playerDied):
 		text_node.text = "GAME COMPLETE!!! \n Total Enemies Defeated: " + str(totalEnemiesDefeated)
 	

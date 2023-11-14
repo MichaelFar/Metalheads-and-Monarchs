@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var health = 100
 @export var graphics : Node2D
 @export var player_weapon_changer : Node2D
+@export var melee : CharacterBody2D
 var move_dir = Vector2.ZERO
 signal has_died
 
@@ -17,12 +18,14 @@ func _ready():
 func _physics_process(delta):
 	if(health >= 0.0):
 		move_dir = Input.get_vector("Left", "Right", "Up", "Down")
-		graphics.global_rotation = global_position.direction_to(get_global_mouse_position()).angle() + PI/2.0
+		graphics.look_at(get_global_mouse_position())
 		velocity = move_dir * move_speed
 		
 		move_and_slide()
 	else:
 		has_died.emit()
+	
+	graphics.visible = !melee.visible
 
 func _on_hurtbox_area_entered(area):
 	
