@@ -15,6 +15,7 @@ var seconds = 0
 var playerDied = false
 var endGame = false
 var frame = 0
+var showControls = true
 signal game_complete
 
 # Called when the node enters the scene tree for the first time.
@@ -30,7 +31,8 @@ func _process(delta):
 	frame += 1
 	if(frame == 1):
 		Globals.player.has_died.connect(game_over)
-	
+	if (Input.is_action_just_released("togglecontrols")):
+		showControls = !showControls
 		
 func _on_timer_timeout():
 	if(!playerDied && !endGame):
@@ -44,7 +46,7 @@ func _on_timer_timeout():
 			Globals.spawner.spawn_enemies()
 			Globals.spawner.spawnMin += 1
 			Globals.spawner.spawnMax += 1
-			Globals.spawner.healthMod += 10.0
+			#Globals.spawner.healthMod += 10.0
 		minutes = totalTimeSec / 60
 		seconds = totalTimeSec % 60
 		
@@ -57,7 +59,8 @@ func update_text():
 	var format_string = "[center]{0} : {1}[/center]" + "\n" + "[center]Your score is " + str(totalEnemiesDefeated * 100) + "[/center]" + "\n" + "[center]Time bonus is " + str(((maxTime - totalTimeSec) / 10) * 100) + "[/center]"
 	
 	var actual_string = format_string.format({"0": str(minutes), "1": str(seconds if seconds > 9 else "0" + str(seconds))})
-	
+	if(showControls):
+		actual_string += "\n" + "Controls:" + "\n" + "WASD - Move" + "\n" + "Mouse - Aim" + "\n" + "LMB - Shoot" + "\n" + "RMB - melee" + "\n" + "Scroll Wheel - Switch Weapon" + "\n" + "SHOW/HIDE CONTROLS WITH H Key"
 	return actual_string
 
 func game_over():

@@ -74,7 +74,7 @@ func _on_hurtbox_area_entered(area):
 		var destination = playerNode.global_position - global_position 
 		destination = destination.normalized()
 		var hasKB = area.get_parent().has_KB
-		print("Hit enemy")
+		
 		health -= area.get_parent().damage
 		healthbar.value = health
 		
@@ -83,7 +83,7 @@ func _on_hurtbox_area_entered(area):
 		material.set_shader_parameter("applied", true)
 		KBFrames = 0
 		KBApplied = true
-		print("Shader is now applied")
+		
 		
 func get_node_type():
 	return "enemy"
@@ -98,3 +98,5 @@ func freeze():
 func set_shader_time():
 	
 	material.set_shader_parameter("start_time", Time.get_ticks_msec() / 1000.0)#Give time in seconds since engine has started
+
+

@@ -47,4 +47,7 @@ func spawn_enemies():
 				enemy.global_position = (spawn_magnitude * direction ) + global_position
 				enemy.health += healthMod
 				
-		
+func _on_area_exited(area):
+	if('bullet' in area.get_parent().name):
+		print("Deleting bullet")
+		area.get_parent().queue_free()

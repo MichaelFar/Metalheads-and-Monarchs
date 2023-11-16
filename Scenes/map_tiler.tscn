@@ -1,14 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1haslje5jyrp"]
+[gd_scene load_steps=5 format=3 uid="uid://b1haslje5jyrp"]
 
 [ext_resource type="Script" path="res://Scripts/map_tiler.gd" id="1_gc1ch"]
+[ext_resource type="PackedScene" uid="uid://bjy4pyecth13m" path="res://Scenes/blueTile.tscn" id="2_5klm8"]
 [ext_resource type="PackedScene" uid="uid://cg288rwaeja6l" path="res://Scenes/tile.tscn" id="2_6lkoh"]
-[ext_resource type="PackedScene" uid="uid://bgjhj7llqu7u5" path="res://Scenes/green_tile.tscn" id="2_16rl7"]
-[ext_resource type="PackedScene" uid="uid://bjy4pyecth13m" path="res://Scenes/blueTile.tscn" id="2_uxsri"]
-[ext_resource type="PackedScene" uid="uid://b8v6kutcxqnj5" path="res://Scenes/purpleTile.tscn" id="4_3il3k"]
+[ext_resource type="PackedScene" uid="uid://b8v6kutcxqnj5" path="res://Scenes/purpleTile.tscn" id="4_7ydgf"]
 
 [node name="MapTiler" type="Node2D" node_paths=PackedStringArray("TileResources")]
 script = ExtResource("1_gc1ch")
 TileResources = NodePath("ResourcePreloader")
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
-resources = [PackedStringArray("blueTile", "green_tile", "purpleTile", "tile"), [ExtResource("2_uxsri"), ExtResource("2_16rl7"), ExtResource("4_3il3k"), ExtResource("2_6lkoh")]]
+resources = [PackedStringArray("blueTile", "purpleTile", "tile"), [ExtResource("2_5klm8"), ExtResource("4_7ydgf"), ExtResource("2_6lkoh")]]

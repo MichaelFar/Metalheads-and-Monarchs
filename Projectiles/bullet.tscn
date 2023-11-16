@@ -25,14 +25,17 @@ texture = ExtResource("2_604b7")
 one_shot = true
 
 [node name="Hitbox" parent="." instance=ExtResource("3_kn6x5")]
-collision_layer = 2
+collision_layer = 2050
 collision_mask = 8
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_l0h65")
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
 [connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 
 [editable path="Hitbox"]

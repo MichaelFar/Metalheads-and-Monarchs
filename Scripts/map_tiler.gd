@@ -17,19 +17,30 @@ func _ready():
 func _process(delta):
 	frame += 1
 	if(frame % 120 == 0):
-		print("Total tiles is now " + str(totalTiles))
+		pass
+		#print("Total tiles is now " + str(totalTiles))
 func spawn_new_tile(g_positionOfNewTile): 
-	totalTiles += 1
-	var randOBJ = RandomNumberGenerator.new()
-	var randIndex = randOBJ.randi_range(0, tileList.size() - 1)
-	var tileInstance = TileResources.get_resource(tileList[randIndex])
-	tileInstance = tileInstance.instantiate()
-	Globals.currentLevel.call_deferred("add_child", tileInstance)
+	var space_state = get_world_2d().direct_space_state
 	
-	tileInstance.mustSpawnNeighbor.connect(spawn_new_tile)
-	tileInstance.derendered.connect(subtract_count)
-	tileSize = tileInstance.tileSize
-	tileInstance.global_position = g_positionOfNewTile
+	var query = PhysicsPointQueryParameters2D.new()
+	query.position = g_positionOfNewTile
+	query.collide_with_areas = true
+	query.collide_with_bodies = true
+	query.collision_mask = 16384
+	var result = space_state.intersect_point(query)
+	if result.size() == 0:
+		
+		totalTiles += 1
+		var randOBJ = RandomNumberGenerator.new()
+		var randIndex = randOBJ.randi_range(0, tileList.size() - 1)
+		var tileInstance = TileResources.get_resource(tileList[randIndex])
+		tileInstance = tileInstance.instantiate()
+		Globals.currentLevel.add_child(tileInstance)
+		Globals.currentLevel.tileCount += 1
+		tileInstance.mustSpawnNeighbor.connect(spawn_new_tile)
+		tileInstance.derendered.connect(subtract_count)
+		tileSize = tileInstance.tileSize
+		tileInstance.global_position = g_positionOfNewTile
 	
 func spawn_initial_tiles():
 	for i in range(dimensions.x - 1):
@@ -37,3 +48,7 @@ func spawn_initial_tiles():
 			spawn_new_tile(Vector2(i * tileSize.x, j * tileSize.y))
 func subtract_count():
 	totalTiles -= 1
+
+
+
+		

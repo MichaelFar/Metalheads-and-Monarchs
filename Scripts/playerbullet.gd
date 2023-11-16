@@ -9,6 +9,7 @@ class_name bullet
 @export var KBStrength = 0.5 #This is multiplied by the enemy's max speed to get knockback value
 @export var cooldown = 0.3
 @export var has_KB = true
+
 var yInfluence = 0.0
 var xInfluence = 0.0
 var influenceVector = Vector2.ZERO
@@ -41,3 +42,7 @@ func _on_hitbox_area_entered(area):
 		queue_free()
 			
 
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	queue_free()

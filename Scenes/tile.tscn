@@ -5,23 +5,24 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_18lim"]
 
-[node name="Tile" type="Node2D" node_paths=PackedStringArray("sprite", "area", "TileDetector")]
+[node name="Tile" type="Node2D" node_paths=PackedStringArray("sprite", "area", "TileDetector", "notifier")]
 script = ExtResource("1_yxlpx")
 sprite = NodePath("BackroundColorTest2")
-area = NodePath("BackroundColorTest2/TileArea")
+area = NodePath("TileArea")
 TileDetector = NodePath("TileDetector")
+notifier = NodePath("VisibleOnScreenNotifier2D")
+
+[node name="TileArea" type="Area2D" parent="."]
+position = Vector2(-1, 0)
+collision_layer = 16384
+collision_mask = 18433
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileArea"]
+shape = SubResource("RectangleShape2D_18lim")
 
 [node name="BackroundColorTest2" type="Sprite2D" parent="."]
 z_index = -10
 texture = ExtResource("1_f3ry1")
-
-[node name="TileArea" type="Area2D" parent="BackroundColorTest2"]
-position = Vector2(-1, 0)
-collision_layer = 16384
-collision_mask = 2049
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BackroundColorTest2/TileArea"]
-shape = SubResource("RectangleShape2D_18lim")
 
 [node name="TileDetector" type="Node2D" parent="."]
 
@@ -42,20 +43,22 @@ position = Vector2(-960, 0)
 gizmo_extents = 480.0
 
 [node name="CollisionCheck5" type="Marker2D" parent="TileDetector"]
-position = Vector2(960, 1080)
+position = Vector2(-960, -1080)
 gizmo_extents = 480.0
 
 [node name="CollisionCheck6" type="Marker2D" parent="TileDetector"]
-position = Vector2(960, -1080)
+position = Vector2(960, 1080)
 gizmo_extents = 480.0
 
 [node name="CollisionCheck7" type="Marker2D" parent="TileDetector"]
-position = Vector2(-960, -1080)
+position = Vector2(960, -1080)
 gizmo_extents = 480.0
 
 [node name="CollisionCheck8" type="Marker2D" parent="TileDetector"]
 position = Vector2(-960, 1080)
 gizmo_extents = 480.0
 
-[connection signal="area_shape_entered" from="BackroundColorTest2/TileArea" to="." method="_on_area_2d_area_shape_entered"]
-[connection signal="area_shape_exited" from="BackroundColorTest2/TileArea" to="." method="_on_area_2d_area_shape_exited"]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="area_shape_entered" from="TileArea" to="." method="_on_area_2d_area_shape_entered"]
+[connection signal="area_shape_exited" from="TileArea" to="." method="_on_tile_area_area_shape_exited"]

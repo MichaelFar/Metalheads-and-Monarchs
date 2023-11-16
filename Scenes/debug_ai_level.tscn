@@ -8,3 +8,5 @@ script = ExtResource("1_wldbb")
 playerNode = NodePath("Player")
 
 [node name="Player" parent="." instance=ExtResource("1_hi61g")]
+
+[connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
