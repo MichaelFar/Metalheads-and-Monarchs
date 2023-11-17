@@ -84,10 +84,7 @@ func send_tile_info():
 			
 			mustSpawnNeighbor.emit(i)
 		missing_neighbors = []
-
-
-
-
+		
 func _on_tile_area_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
 	if(area != null):
 		
