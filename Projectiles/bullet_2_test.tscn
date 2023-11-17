@@ -10,7 +10,7 @@ height = 36.0
 
 [node name="bullet2test" type="CharacterBody2D"]
 script = ExtResource("1_2vlly")
-damage = 2.0
+damage = 3.0
 cooldown = 0.05
 has_KB = false
 

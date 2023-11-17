@@ -46,7 +46,3 @@ func spawn_initial_tiles():
 			spawn_new_tile(Vector2(i * tileSize.x, j * tileSize.y))
 func subtract_count():
 	totalTiles -= 1
-
-
-
-		
