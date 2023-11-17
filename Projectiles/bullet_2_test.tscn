@@ -1,27 +1,26 @@
 [gd_scene load_steps=5 format=3 uid="uid://l3vhofh4v40u"]
 
-[ext_resource type="Script" path="res://Scripts/bullet2test.gd" id="1_auyt3"]
-[ext_resource type="Texture2D" uid="uid://crqreufycqcyy" path="res://Sprites/testspriteplayer.png" id="2_wuwmo"]
+[ext_resource type="Script" path="res://Scripts/playerbullet.gd" id="1_2vlly"]
+[ext_resource type="Texture2D" uid="uid://c8xsfie7dn1bf" path="res://Sprites/whiterectangle.png" id="2_yyu7a"]
 [ext_resource type="PackedScene" uid="uid://8r5df653l7cy" path="res://Scenes/hitbox.tscn" id="3_y48y2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j3dtq"]
-radius = 8.0
-height = 24.0
+radius = 4.0
+height = 36.0
 
 [node name="bullet2test" type="CharacterBody2D"]
-script = ExtResource("1_auyt3")
-damage = 3.0
-KBStrength = -1.0
+script = ExtResource("1_2vlly")
+damage = 2.0
 cooldown = 0.05
 has_KB = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 0.627451, 0.501961, 1)
+modulate = Color(1, 1, 1, 0.705882)
 z_index = -1
-position = Vector2(-2.98023e-07, -0.5)
-rotation = 1.5708
-scale = Vector2(0.5, 0.71875)
-texture = ExtResource("2_wuwmo")
+texture_filter = 1
+position = Vector2(-2.98023e-07, -0.0937499)
+scale = Vector2(0.5, 0.651042)
+texture = ExtResource("2_yyu7a")
 
 [node name="Lifetime" type="Timer" parent="."]
 one_shot = true
@@ -36,7 +35,7 @@ shape = SubResource("CapsuleShape2D_j3dtq")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
-[connection signal="area_entered" from="Hitbox" to="." method="area_entered"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 
 [editable path="Hitbox"]

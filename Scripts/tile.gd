@@ -13,10 +13,9 @@ var playerPresent = false
 var frame = 0
 var missing_neighbors = []
 var existing_neighbors = []
-signal playerEntered
-signal playerExited
+
 signal mustSpawnNeighbor(Vector2)
-signal derendered
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rect = sprite.get_rect()
@@ -32,19 +31,6 @@ func _process(delta):
 	frame += 1
 	if frame % 2 == 0:
 		pass
-#		if(!notifier.is_on_screen()):
-#			var shouldDeleteTile = true
-#			for i in existing_neighbors:
-#				if (i != null):
-#					if i.playerPresent:
-#						shouldDeleteTile = false
-#						break
-#
-#			if(shouldDeleteTile):
-#				print("Deleting self")
-#
-#				queue_free()
-		#print("Frame rate is " + str(1 / delta))
 	
 func _on_area_2d_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	if(area != null):
@@ -90,7 +76,7 @@ func has_all_neighbors():
 	return missing_neighbors.size() == 0
 
 func send_tile_info():
-	playerEntered.emit()
+	
 	playerPresent = true
 	if(!has_all_neighbors()):
 		#print("Missing neighbors size is " + str(missing_neighbors.size()))

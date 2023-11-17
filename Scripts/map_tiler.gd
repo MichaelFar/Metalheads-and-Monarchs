@@ -29,8 +29,6 @@ func spawn_new_tile(g_positionOfNewTile):
 	query.collision_mask = 16384
 	var result = space_state.intersect_point(query)
 	if result.size() == 0:
-		
-		totalTiles += 1
 		var randOBJ = RandomNumberGenerator.new()
 		var randIndex = randOBJ.randi_range(0, tileList.size() - 1)
 		var tileInstance = TileResources.get_resource(tileList[randIndex])
@@ -38,7 +36,7 @@ func spawn_new_tile(g_positionOfNewTile):
 		Globals.currentLevel.add_child(tileInstance)
 		Globals.currentLevel.tileCount += 1
 		tileInstance.mustSpawnNeighbor.connect(spawn_new_tile)
-		tileInstance.derendered.connect(subtract_count)
+		
 		tileSize = tileInstance.tileSize
 		tileInstance.global_position = g_positionOfNewTile
 	

@@ -5,5 +5,5 @@
 
 [node name="Tile" instance=ExtResource("1_foi8b")]
 
-[node name="BackroundColorTest2" parent="." index="0"]
+[node name="BackroundColorTest2" parent="." index="1"]
 texture = ExtResource("2_xiju4")
