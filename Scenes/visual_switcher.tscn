@@ -102,18 +102,18 @@ hframes = 4
 vframes = 2
 frame = 3
 
-[node name="MonarchBaseSmgFinal1113" type="Sprite2D" parent="."]
-texture_filter = 1
-texture = ExtResource("1_knq04")
-offset = Vector2(20, 0)
-hframes = 2
-vframes = 2
-frame = 3
-
 [node name="MonarchBaseShotgunFinal1112" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("2_dem2u")
 offset = Vector2(18, 0)
+hframes = 2
+vframes = 2
+frame = 3
+
+[node name="MonarchBaseSmgFinal1113" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_knq04")
+offset = Vector2(20, 0)
 hframes = 2
 vframes = 2
 frame = 3
