@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://brsr8uqmfym6n"]
+[gd_scene load_steps=8 format=3 uid="uid://0hgx1rerxlqc"]
 
 [ext_resource type="Script" path="res://Scripts/melee.gd" id="1_ynbrw"]
 [ext_resource type="PackedScene" uid="uid://8r5df653l7cy" path="res://Scenes/hitbox.tscn" id="2_dd1p0"]
-[ext_resource type="Texture2D" uid="uid://dliwbpej2vh6b" path="res://Sprites/Melee.png" id="3_q1nhg"]
+[ext_resource type="Texture2D" uid="uid://bifkxow6of372" path="res://Sprites/Melee.png" id="3_q1nhg"]
 
 [sub_resource type="Animation" id="Animation_p2lrl"]
 resource_name = "Melee"
@@ -94,6 +94,7 @@ radius = 23.0
 height = 56.0
 
 [node name="melee" type="CharacterBody2D" node_paths=PackedStringArray("animationplayer")]
+visible = false
 script = ExtResource("1_ynbrw")
 KBStrength = 2.5
 animationplayer = NodePath("AnimationPlayer")
@@ -117,7 +118,7 @@ disabled = true
 [node name="Melee" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("3_q1nhg")
-offset = Vector2(10, 0)
+offset = Vector2(20, 0)
 vframes = 5
 
 [editable path="Hitbox"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bifkxow6of372"
-path="res://.godot/imported/Melee.png-fede323533a627330d3a28b9a8fc179e.ctex"
+uid="uid://bkru47d8uhy0y"
+path="res://.godot/imported/Legs Test 11_13.png-590c26630f55b99ba44544556fd10868.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Melee.png"
-dest_files=["res://.godot/imported/Melee.png-fede323533a627330d3a28b9a8fc179e.ctex"]
+source_file="res://Sprites/Legs Test 11_13.png"
+dest_files=["res://.godot/imported/Legs Test 11_13.png-590c26630f55b99ba44544556fd10868.ctex"]
 
 [params]
 

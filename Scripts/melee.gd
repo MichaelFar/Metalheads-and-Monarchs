@@ -7,7 +7,8 @@ extends CharacterBody2D
 @export var animationplayer : AnimationPlayer
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed("Melee"):
-		animationplayer.play("Melee")
+	if(get_parent().health >= 0.0):
+		if Input.is_action_just_pressed("Melee"):
+			animationplayer.play("Melee")
 	look_at(get_global_mouse_position())
 	

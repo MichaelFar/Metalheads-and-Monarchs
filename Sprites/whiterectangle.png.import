@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bifkxow6of372"
-path="res://.godot/imported/Melee.png-fede323533a627330d3a28b9a8fc179e.ctex"
+uid="uid://c8xsfie7dn1bf"
+path="res://.godot/imported/whiterectangle.png-988cf528becc5145907d48e2415c228e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Melee.png"
-dest_files=["res://.godot/imported/Melee.png-fede323533a627330d3a28b9a8fc179e.ctex"]
+source_file="res://Sprites/whiterectangle.png"
+dest_files=["res://.godot/imported/whiterectangle.png-988cf528becc5145907d48e2415c228e.ctex"]
 
 [params]
 

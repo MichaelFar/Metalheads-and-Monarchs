@@ -7,13 +7,17 @@
 radius = 10.198
 
 [node name="Spawner" type="Area2D" node_paths=PackedStringArray("spawnCircle", "enemyPreloader")]
+collision_layer = 2048
+collision_mask = 2048
 script = ExtResource("1_t4l1l")
 spawnCircle = NodePath("CollisionShape2D")
 enemyPreloader = NodePath("ResourcePreloader")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_17mgg")
-debug_color = Color(0.552941, 0.34902, 0.580392, 0.419608)
+debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
 resources = [PackedStringArray("chase_ai"), [ExtResource("2_aoumf")]]
+
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

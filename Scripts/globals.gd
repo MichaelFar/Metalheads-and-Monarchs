@@ -8,11 +8,14 @@ var activeEnemies = []
 
 func reset_game():
 	var newPlayer = preload("res://Scenes/player.tscn")
+	var tile = preload("res://Scenes/map_tiler.tscn")
 	for i in activeEnemies:
 		i.queue_free()
 	activeEnemies = []
 	player.queue_free()
 	newPlayer = newPlayer.instantiate()
+	tile = tile.instantiate()
+	currentLevel.add_child(tile)
 	currentLevel.add_child(newPlayer)
 	player = newPlayer
 	

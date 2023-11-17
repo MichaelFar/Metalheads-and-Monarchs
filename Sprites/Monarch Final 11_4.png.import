@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bifkxow6of372"
-path="res://.godot/imported/Melee.png-fede323533a627330d3a28b9a8fc179e.ctex"
+uid="uid://ceno236nqa57l"
+path="res://.godot/imported/Monarch Final 11_4.png-5c0493ffaaf17acdee1fceb005b2a46e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Melee.png"
-dest_files=["res://.godot/imported/Melee.png-fede323533a627330d3a28b9a8fc179e.ctex"]
+source_file="res://Sprites/Monarch Final 11_4.png"
+dest_files=["res://.godot/imported/Monarch Final 11_4.png-5c0493ffaaf17acdee1fceb005b2a46e.ctex"]
 
 [params]
 

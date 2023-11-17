@@ -8,6 +8,7 @@ var spawn_direction = Vector2.ZERO
 var enemy_list = []
 var spawnMin = 1
 var spawnMax = 5
+var healthMod = 0.0
 
 func _ready():
 	enemy_list = enemyPreloader.get_resource_list()
@@ -44,4 +45,9 @@ func spawn_enemies():
 				var enemy = resource.instantiate()
 				Globals.currentLevel.add_child(enemy)
 				enemy.global_position = (spawn_magnitude * direction ) + global_position
-		
+				enemy.health += healthMod
+				
+func _on_area_exited(area):
+	if('bullet' in area.get_parent().name):
+		print("Deleting bullet")
+		area.get_parent().queue_free()

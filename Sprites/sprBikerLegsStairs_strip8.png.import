@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bifkxow6of372"
-path="res://.godot/imported/Melee.png-fede323533a627330d3a28b9a8fc179e.ctex"
+uid="uid://cav6c464icf37"
+path="res://.godot/imported/sprBikerLegsStairs_strip8.png-1f216ffcb31cf2ad61f9d92b429ca86f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Melee.png"
-dest_files=["res://.godot/imported/Melee.png-fede323533a627330d3a28b9a8fc179e.ctex"]
+source_file="res://Sprites/sprBikerLegsStairs_strip8.png"
+dest_files=["res://.godot/imported/sprBikerLegsStairs_strip8.png-1f216ffcb31cf2ad61f9d92b429ca86f.ctex"]
 
 [params]
 

@@ -42,6 +42,7 @@ weapon_switcher = NodePath("../../Playerweapon_changer")
 gun_offset = NodePath("../Gun_offset")
 
 [node name="Gun_offset" type="Marker2D" parent="Graphics"]
+position = Vector2(0, 10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Graphics/Gun_offset"]
 shape = SubResource("CircleShape2D_jthtb")
