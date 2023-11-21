@@ -8,7 +8,9 @@ extends CharacterBody2D
 @export var graphics : Node2D
 @export var player_weapon_changer : Node2D
 @export var melee : CharacterBody2D
+
 var move_dir = Vector2.ZERO
+
 signal has_died
 
 func _ready():

@@ -19,7 +19,7 @@ func _ready():
 	xInfluence = randObj.randf_range(-1.0 * spreadRange, spreadRange)
 	yInfluence = randObj.randf_range(-1.0 * spreadRange, spreadRange)
 	influenceVector = Vector2(xInfluence, yInfluence)
-
+	
 func _physics_process(delta):
 	
 	velocity = transform.x * speed
@@ -28,7 +28,6 @@ func _physics_process(delta):
 
 func _on_lifetime_timeout():
 	queue_free()
-
 
 func _on_hitbox_area_entered(area):
 	if(area.name == "Hurtbox" || area.name == "obstacle"):
@@ -43,8 +42,20 @@ func _on_hitbox_area_entered(area):
 				return
 		hit_effect = preload("res://Scenes/hit_effect.tscn")
 		queue_free()
-			
-
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
+
+func set_stats(stat, value):
+	match stat:
+		
+		Globals.Stats.DAMAGE:
+			damage = value
+		Globals.Stats.SPREADRANGE:
+			spreadRange = value
+		Globals.Stats.KBSTRENGTH:
+			KBStrength = value
+		Globals.Stats.COOLDOWN:
+			cooldown = value
+		Globals.Stats.KBENABLED:
+			has_KB = true#If this is true KBStrength should also be given a value

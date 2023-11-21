@@ -2,6 +2,15 @@
 
 [ext_resource type="Script" path="res://Scripts/Playerweapon_changer.gd" id="1_gyrn8"]
 
-[node name="Playerweapon_changer" type="Node2D"]
+[node name="Playerweapon_changer" type="Node2D" node_paths=PackedStringArray("pistolModifiers", "smgModifiers", "shotgunModifiers")]
 position = Vector2(0, 1)
 script = ExtResource("1_gyrn8")
+pistolModifiers = NodePath("pistolModifiers")
+smgModifiers = NodePath("smgModifiers")
+shotgunModifiers = NodePath("shotgunModifiers")
+
+[node name="pistolModifiers" type="ResourcePreloader" parent="."]
+
+[node name="smgModifiers" type="ResourcePreloader" parent="."]
+
+[node name="shotgunModifiers" type="ResourcePreloader" parent="."]

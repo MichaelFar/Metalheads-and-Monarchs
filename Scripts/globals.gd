@@ -1,18 +1,22 @@
 extends Node
 
 var player = null#Reference to player scene
-var currentLevel = null 
-var spawner = null
-var game_timer = null
-var activeEnemies = []
+var currentLevel = null #Current level
+var spawner = null#Spawner attached to the player
+var game_timer = null#screen_text scene
+var activeEnemies = []#Number of enemies that are active
+var weapon_changer = null#scene responsible for changing weapons
+
+enum Stats {DAMAGE, SPREADRANGE, KBSTRENGTH, COOLDOWN, KBENABLED}
 
 func reset_game():
 	var newPlayer = preload("res://Scenes/player.tscn")
 	var tile = preload("res://Scenes/map_tiler.tscn")
-	for i in activeEnemies:
+	
+	for i in currentLevel.get_children():
 		i.queue_free()
 	activeEnemies = []
-	player.queue_free()
+	
 	newPlayer = newPlayer.instantiate()
 	tile = tile.instantiate()
 	currentLevel.add_child(tile)
@@ -23,3 +27,5 @@ func reset_game():
 func _process(delta):
 	if(Input.is_action_just_released('restart')):
 		reset_game()
+	if(Input.is_action_just_released('upgrade_test')):
+		game_timer.upgrade_begin()

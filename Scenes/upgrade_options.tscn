@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyg0c1l3wav7m"]
+
+[ext_resource type="Script" path="res://Scripts/upgrade_options.gd" id="1_bgafl"]
+[ext_resource type="Texture2D" uid="uid://ct1rm65xsf7hb" path="res://Sprites/Monarch Base Pistol Final 11_12.png" id="2_cikbk"]
+[ext_resource type="PackedScene" uid="uid://c25mji482b2if" path="res://Scenes/pistol_dmgup.tscn" id="3_0puyg"]
+
+[node name="UpgradeOptions" type="VBoxContainer" node_paths=PackedStringArray("upgradeLoader", "button")]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 163.0
+offset_bottom = 84.0
+alignment = 1
+script = ExtResource("1_bgafl")
+upgradeLoader = NodePath("ResourcePreloader")
+button = NodePath("HBoxContainer/Button")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 2
+
+[node name="MonarchBaseSmgFinal1113" type="Sprite2D" parent="HBoxContainer"]
+texture_filter = 1
+position = Vector2(40, 14)
+texture = ExtResource("2_cikbk")
+hframes = 4
+vframes = 2
+frame = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Pistol dmg +15%"
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "UPGRADE!"
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="."]
+resources = [PackedStringArray("pistol_dmgup"), [ExtResource("3_0puyg")]]
+
+[connection signal="button_up" from="HBoxContainer/Button" to="." method="_on_button_button_up"]

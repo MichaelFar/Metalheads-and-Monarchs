@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bctihlcscxsex"]
+[gd_scene load_steps=16 format=3 uid="uid://bctihlcscxsex"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_a1pkj"]
 [ext_resource type="PackedScene" uid="uid://bo7atiusshn2u" path="res://Scenes/screen_text.tscn" id="3_s6lj3"]
@@ -13,13 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://0hgx1rerxlqc" path="res://Scenes/melee.tscn" id="12_p8p5p"]
 [ext_resource type="PackedScene" uid="uid://q4ihp0pfa5a3" path="res://Scenes/visual_switcher.tscn" id="13_g7v4m"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jthtb"]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_ckaxx"]
 radius = 26.0192
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3vkrt"]
-radius = 20.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_jthtb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ddgn"]
 radius = 23.0
@@ -35,6 +32,11 @@ graphics = NodePath("Graphics")
 player_weapon_changer = NodePath("Playerweapon_changer")
 melee = NodePath("melee")
 
+[node name="Hurtbox" parent="." instance=ExtResource("7_w5vy5")]
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CircleShape2D_ckaxx")
+
 [node name="Graphics" type="Node2D" parent="."]
 
 [node name="visual_switcher" parent="Graphics" node_paths=PackedStringArray("weapon_switcher", "gun_offset") instance=ExtResource("13_g7v4m")]
@@ -45,15 +47,6 @@ gun_offset = NodePath("../Gun_offset")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Graphics/Gun_offset"]
 shape = SubResource("CircleShape2D_jthtb")
-
-[node name="Hurtbox" parent="Graphics" instance=ExtResource("7_w5vy5")]
-
-[node name="CollisionShape2D" parent="Graphics/Hurtbox" index="0"]
-shape = SubResource("CircleShape2D_ckaxx")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Graphics"]
-rotation = -0.00138414
-shape = SubResource("CircleShape2D_3vkrt")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -5)
@@ -96,8 +89,8 @@ player = NodePath("..")
 
 [node name="melee" parent="." instance=ExtResource("12_p8p5p")]
 
-[connection signal="area_entered" from="Graphics/Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 
-[editable path="Graphics/Hurtbox"]
+[editable path="Hurtbox"]
 [editable path="Control"]
 [editable path="legs_animator"]

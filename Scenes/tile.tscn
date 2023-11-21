@@ -59,6 +59,7 @@ position = Vector2(-960, 1080)
 gizmo_extents = 480.0
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-480, -540, 960, 1080)
 
 [connection signal="area_shape_entered" from="TileArea" to="." method="_on_area_2d_area_shape_entered"]
 [connection signal="area_shape_exited" from="TileArea" to="." method="_on_tile_area_area_shape_exited"]

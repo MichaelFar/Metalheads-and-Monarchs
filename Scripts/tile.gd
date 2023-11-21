@@ -21,7 +21,7 @@ func _ready():
 	rect = sprite.get_rect()
 	area.get_children()[0].shape.size = rect.size
 	tileSize = rect.size
-	notifier.rect = rect
+	#notifier.rect = rect
 	
 	z_index = -5
 	raycastList = TileDetector.get_children()

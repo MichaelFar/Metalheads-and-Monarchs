@@ -4,6 +4,10 @@ extends Control
 
 @export var text_node : RichTextLabel
 @export var initialMinutes = 3
+@export var upgradePanel : Panel
+@export var upgradeLabel : Label
+
+var upgradePositions = []
 
 var totalEnemiesDefeated = 0
 var totalTimeSec = initialMinutes * 60
@@ -20,13 +24,13 @@ signal game_complete
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#position = Vector2(0.0, get_viewport().size.y)
 	Globals.game_timer = self
 	text_node.text = update_text()
-	position.y = get_viewport_rect().size.y / -2.0
+	update_placement()
 	get_viewport().size_changed.connect(update_placement)
+	#upgrade_begin()
+	upgradePanel.hide()
 	
-
 func _process(delta):
 	frame += 1
 	if(frame == 1):
@@ -43,10 +47,11 @@ func _on_timer_timeout():
 			game_over()
 			return
 		if ((maxTime - totalTimeSec) % 10 == 0):# Every 10 seconds
+			
 			Globals.spawner.spawn_enemies()
 			Globals.spawner.spawnMin += 1
 			Globals.spawner.spawnMax += 1
-			#Globals.spawner.healthMod += 10.0
+			
 		minutes = totalTimeSec / 60
 		seconds = totalTimeSec % 60
 		
@@ -72,4 +77,46 @@ func game_over():
 		text_node.text = "GAME COMPLETE!!! \n Total Enemies Defeated: " + str(totalEnemiesDefeated)
 	
 func update_placement():
+	
 	position.y = get_viewport_rect().size.y / -2.0
+	upgradePanel.position.y = text_node.size.y / 2.0
+	upgradePanel.size.x = get_viewport_rect().size.x / 3.0
+	upgradePanel.position.x = upgradePanel.size.x / -2.0
+	upgradeLabel.size.x = upgradePanel.size.x
+	set_panel_height()
+	
+func set_panel_height():
+	
+	upgradePositions = []
+	var height_needed = 0.0
+	
+	for i in upgradePanel.get_children():
+		
+		if(i != upgradePanel.get_children()[0]):
+			
+			height_needed = height_needed + 1.5 * i.size.y
+			i.position = Vector2(0, height_needed - (i.size.y ))
+			upgradePositions.append(height_needed)
+			
+	upgradePanel.size.y = height_needed
+
+func upgrade_begin():
+	if upgradePanel.visible:
+		upgradePanel.hide()
+		for i in upgradePanel.get_children():
+			if 'Options' in i.name:
+				i.queue_free()
+	else:
+		
+		upgradePanel.show()
+		var upgrade_option = preload("res://Scenes/upgrade_options.tscn")
+		for i in range(3):
+			var upgrade_option_scene = upgrade_option.instantiate()
+			upgradePanel.add_child(upgrade_option_scene)
+			upgrade_option_scene.chosen_upgrade.connect(upgrade_chosen)
+		set_panel_height()
+	
+
+func upgrade_chosen(upgradeScene, loadedUpgradeScene):
+	upgrade_begin()
+	Globals.weapon_changer.add_modifier_to_list(upgradeScene,loadedUpgradeScene)
