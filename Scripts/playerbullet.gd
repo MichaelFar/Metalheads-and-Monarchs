@@ -34,8 +34,8 @@ func _on_hitbox_area_entered(area):
 		hit_effect = hit_effect.instantiate()
 		Globals.currentLevel.add_child(hit_effect)
 		hit_effect.global_position = global_position
-		if(area.has_method("get_node_type")):
-			if(area.get_node_type() == 'enemy'):
+		if(area.get_parent().has_method("get_node_type")):
+			if(area.get_parent().get_node_type() == 'enemy'):
 				
 				queue_free()
 			elif(area.get_node_type() == 'player'):

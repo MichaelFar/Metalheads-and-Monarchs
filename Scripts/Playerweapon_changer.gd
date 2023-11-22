@@ -51,6 +51,7 @@ func switch_weapon(direction):
 	switched_weapon.emit(current_weapon_index,offset_vector)
 
 func shoot():
+	
 	var modList = load_modifiers()
 	var p = current_weapon.instantiate()
 	Globals.currentLevel.add_child(p)
@@ -61,6 +62,7 @@ func shoot():
 	cooldown_timer.wait_time = p.cooldown
 	shooting.emit(p.cooldown)
 	cooldown_timer.start()
+	
 func load_modifiers():
 	var modList = get_children()[current_weapon_index].get_resource_list()
 	return modList

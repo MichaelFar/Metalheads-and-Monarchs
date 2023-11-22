@@ -101,7 +101,9 @@ func set_panel_height():
 	upgradePanel.size.y = height_needed
 
 func upgrade_begin():
+	
 	if upgradePanel.visible:
+		
 		upgradePanel.hide()
 		for i in upgradePanel.get_children():
 			if 'Options' in i.name:
@@ -118,5 +120,6 @@ func upgrade_begin():
 	
 
 func upgrade_chosen(upgradeScene, loadedUpgradeScene):
+	
 	upgrade_begin()
 	Globals.weapon_changer.add_modifier_to_list(upgradeScene,loadedUpgradeScene)

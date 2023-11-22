@@ -14,3 +14,5 @@ shotgunModifiers = NodePath("shotgunModifiers")
 [node name="smgModifiers" type="ResourcePreloader" parent="."]
 
 [node name="shotgunModifiers" type="ResourcePreloader" parent="."]
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="."]

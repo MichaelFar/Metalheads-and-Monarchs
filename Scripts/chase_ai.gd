@@ -76,6 +76,7 @@ func _on_hurtbox_area_entered(area):
 		var hasKB = area.get_parent().has_KB
 		
 		health -= area.get_parent().damage
+		
 		healthbar.value = health
 		
 		velocity = -1.0 * destination * (max_speed * area.get_parent().KBStrength / 3.0) if hasKB else velocity

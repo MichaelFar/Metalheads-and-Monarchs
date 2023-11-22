@@ -5,6 +5,7 @@ extends CharacterBody2D
 
 @export var healthbar : Control
 @export var health = 100
+@export var max_health = 100
 @export var graphics : Node2D
 @export var player_weapon_changer : Node2D
 @export var melee : CharacterBody2D
@@ -35,6 +36,8 @@ func _on_hurtbox_area_entered(area):
 		
 		healthbar.healthbar.value -= area.get_parent().damage
 		health -= area.get_parent().damage
+		health = clampf(health, 0.0, max_health)
 
 func get_node_type():
 	return "player"
+
