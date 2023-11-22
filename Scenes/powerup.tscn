@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://df2bhnlb7vf2d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xg77t"]
+radius = 23.0217
+
+[node name="powerup" type="Area2D"]
+
+[node name="powerup shape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xg77t")
+
+[node name="powerup sprite" type="Sprite2D" parent="."]
