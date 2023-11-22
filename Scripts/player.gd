@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+var power_up_active = false
 
 @export var move_speed = 300
 
@@ -36,3 +37,9 @@ func _on_hurtbox_area_entered(area):
 
 func get_node_type():
 	return "player"
+
+func _on_powerup_area_entered(area):
+	##Reparent powerup here
+	power_up_active = true
+func _on_timer_timeout():
+	power_up_active = false

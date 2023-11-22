@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dsxko2cc242t4"]
+[gd_scene load_steps=15 format=3 uid="uid://dsxko2cc242t4"]
 
 [ext_resource type="Material" uid="uid://p24j6lbe2e5d" path="res://Shaders/chase_ai.tres" id="1_c1ooj"]
 [ext_resource type="Script" path="res://Scripts/chase_ai.gd" id="1_gy7b7"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b08yl81iy13q1" path="res://Archid Spider Animation Final 11_3 .png" id="4_c0ke3"]
 [ext_resource type="PackedScene" uid="uid://cvbxgwoo58p56" path="res://Scenes/ray_cast_container.tscn" id="5_p7ste"]
 [ext_resource type="PackedScene" uid="uid://ch5u5wujtbli8" path="res://Scenes/healthbar.tscn" id="6_epqxt"]
+[ext_resource type="Script" path="res://Scripts/numbgen.gd" id="8_rvbxq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_36rl7"]
 radius = 36.0
@@ -110,6 +111,9 @@ libraries = {
 }
 
 [node name="ShaderLoader" type="ResourcePreloader" parent="."]
+
+[node name="numbgen" type="Node2D" parent="."]
+script = ExtResource("8_rvbxq")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 
