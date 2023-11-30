@@ -7,7 +7,9 @@ extends CharacterBody2D
 @export var KBStrength = 0.5 #This is multiplied by the enemy's max speed to get knockback value
 @export var cooldown = 0.3
 @export var has_KB = true
+@export var powerupList : Node2D
 var hit_effect = null
+var is_vampire = false
 var yInfluence = 0.0
 var xInfluence = 0.0
 var influenceVector = Vector2.ZERO
@@ -36,7 +38,10 @@ func _on_hitbox_area_entered(area):
 		hit_effect.global_position = global_position
 		if(area.get_parent().has_method("get_node_type")):
 			if(area.get_parent().get_node_type() == 'enemy'):
-				
+				if (is_vampire):
+					print("I got vampire")
+					Globals.player.health += damage
+					Globals.player.healthbar.healthbar.value = Globals.player.health
 				queue_free()
 			elif(area.get_node_type() == 'player'):
 				return
@@ -59,3 +64,7 @@ func set_stats(stat, value):
 			cooldown = value
 		Globals.Stats.KBENABLED:
 			has_KB = true#If this is true KBStrength should also be given a value
+		Globals.Stats.AREA:
+			scale = value
+
+

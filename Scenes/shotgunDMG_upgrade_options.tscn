@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy41a77wngh5g"]
+
+[ext_resource type="PackedScene" uid="uid://cyg0c1l3wav7m" path="res://Scenes/upgrade_options.tscn" id="1_06mxl"]
+[ext_resource type="PackedScene" uid="uid://brt44cjdfp0hx" path="res://Scenes/shotgun_dmgup.tscn" id="2_qhfy2"]
+
+[node name="UpgradeOptions" instance=ExtResource("1_06mxl")]
+
+[node name="Label" parent="HBoxContainer" index="1"]
+text = "Shotgun dmg +5%"
+
+[node name="ResourcePreloader" parent="." index="1"]
+resources = [PackedStringArray("shotgun_dmgup"), [ExtResource("2_qhfy2")]]

@@ -96,6 +96,7 @@ animation_player = NodePath("AnimationPlayer")
 
 [node name="MonarchBasePistolFinal1112" type="Sprite2D" parent="."]
 texture_filter = 1
+use_parent_material = true
 texture = ExtResource("3_k2l5a")
 offset = Vector2(13, 0)
 hframes = 4
@@ -104,6 +105,7 @@ frame = 3
 
 [node name="MonarchBaseSmgFinal1113" type="Sprite2D" parent="."]
 texture_filter = 1
+use_parent_material = true
 texture = ExtResource("1_knq04")
 offset = Vector2(20, 0)
 hframes = 2
@@ -112,6 +114,7 @@ frame = 3
 
 [node name="MonarchBaseShotgunFinal1112" type="Sprite2D" parent="."]
 texture_filter = 1
+use_parent_material = true
 texture = ExtResource("2_dem2u")
 offset = Vector2(18, 0)
 hframes = 2

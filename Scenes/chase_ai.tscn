@@ -1,13 +1,25 @@
-[gd_scene load_steps=15 format=3 uid="uid://dsxko2cc242t4"]
+[gd_scene load_steps=19 format=3 uid="uid://dsxko2cc242t4"]
 
-[ext_resource type="Material" uid="uid://p24j6lbe2e5d" path="res://Shaders/chase_ai.tres" id="1_c1ooj"]
+[ext_resource type="Shader" path="res://Shaders/player.gdshader" id="1_gbn7i"]
 [ext_resource type="Script" path="res://Scripts/chase_ai.gd" id="1_gy7b7"]
 [ext_resource type="PackedScene" uid="uid://cscwrtnkcq8r5" path="res://Scenes/hurtbox.tscn" id="3_xa3rt"]
 [ext_resource type="PackedScene" uid="uid://8r5df653l7cy" path="res://Scenes/hitbox.tscn" id="4_0uwiy"]
 [ext_resource type="PackedScene" uid="uid://cvbxgwoo58p56" path="res://Scenes/ray_cast_container.tscn" id="5_p7ste"]
 [ext_resource type="Texture2D" uid="uid://b08yl81iy13q1" path="res://Sprites/Archid Spider Animation Final 11_3 .png" id="6_1tjxg"]
 [ext_resource type="PackedScene" uid="uid://ch5u5wujtbli8" path="res://Scenes/healthbar.tscn" id="6_epqxt"]
-[ext_resource type="Script" path="res://Scripts/numbgen.gd" id="8_rvbxq"]
+[ext_resource type="PackedScene" uid="uid://bcqb4j5m8nwkx" path="res://Scenes/power_up_container.tscn" id="8_7cylb"]
+[ext_resource type="PackedScene" uid="uid://q7hg0b2lccuf" path="res://Scenes/blood_particles.tscn" id="9_jlhkq"]
+[ext_resource type="Texture2D" uid="uid://cj30c86iursk5" path="res://Sprites/Archid Spider Blue Final 11_29(1).png" id="10_llquf"]
+[ext_resource type="Texture2D" uid="uid://ca2q2bvvg66y" path="res://Sprites/Archid Spider Purple Final 11_29 (2).png" id="10_ommsv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ami45"]
+resource_local_to_scene = true
+shader = ExtResource("1_gbn7i")
+shader_parameter/speed = 2.0
+shader_parameter/tint = Color(1, 0, 0, 1)
+shader_parameter/span = 1.0
+shader_parameter/start_time = 0.0
+shader_parameter/applied = false
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_36rl7"]
 radius = 36.0
@@ -58,8 +70,8 @@ _data = {
 "walk": SubResource("Animation_cw7xv")
 }
 
-[node name="ChaseAI" type="CharacterBody2D" node_paths=PackedStringArray("RayCastContainer", "sprite", "healthbar", "animationPlayer", "ShaderLoader")]
-material = ExtResource("1_c1ooj")
+[node name="ChaseAI" type="CharacterBody2D" node_paths=PackedStringArray("RayCastContainer", "sprite", "healthbar", "animationPlayer", "ShaderLoader", "SpriteLoader")]
+material = SubResource("ShaderMaterial_ami45")
 collision_layer = 4
 collision_mask = 8
 motion_mode = 1
@@ -69,6 +81,7 @@ sprite = NodePath("ArchidSpiderAnimationFinal113")
 healthbar = NodePath("Control/ProgressBar")
 animationPlayer = NodePath("AnimationPlayer")
 ShaderLoader = NodePath("ShaderLoader")
+SpriteLoader = NodePath("SpriteList")
 
 [node name="Hurtbox" parent="." instance=ExtResource("3_xa3rt")]
 collision_layer = 8
@@ -112,8 +125,13 @@ libraries = {
 
 [node name="ShaderLoader" type="ResourcePreloader" parent="."]
 
-[node name="numbgen" type="Node2D" parent="."]
-script = ExtResource("8_rvbxq")
+[node name="PowerUpContainer" parent="." instance=ExtResource("8_7cylb")]
+
+[node name="blood_particles" parent="." instance=ExtResource("9_jlhkq")]
+emitting = false
+
+[node name="SpriteList" type="ResourcePreloader" parent="."]
+resources = [PackedStringArray("Archid Spider Animation Final 11_3 ", "Archid Spider Blue Final 11_29(1)", "Archid Spider Purple Final 11_29 (2)"), [ExtResource("6_1tjxg"), ExtResource("10_llquf"), ExtResource("10_ommsv")]]
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 

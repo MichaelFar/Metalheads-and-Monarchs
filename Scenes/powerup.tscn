@@ -1,11 +1,39 @@
-[gd_scene load_steps=2 format=3 uid="uid://df2bhnlb7vf2d"]
+[gd_scene load_steps=6 format=3 uid="uid://df2bhnlb7vf2d"]
+
+[ext_resource type="Script" path="res://Scripts/powerup.gd" id="1_cjist"]
+[ext_resource type="Shader" path="res://Shaders/player.gdshader" id="1_utefs"]
+[ext_resource type="Texture2D" uid="uid://csrnrlcyg13d0" path="res://Sprites/#1 - Transparent Icons.png" id="2_dmi02"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1mvxo"]
+shader = ExtResource("1_utefs")
+shader_parameter/speed = 1.0
+shader_parameter/tint = Color(1, 0, 0.662745, 1)
+shader_parameter/span = 1.0
+shader_parameter/start_time = 0.0
+shader_parameter/applied = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xg77t"]
-radius = 23.0217
+radius = 26.0192
 
-[node name="powerup" type="Area2D"]
+[node name="powerup" type="Area2D" node_paths=PackedStringArray("powerup_timer")]
+material = SubResource("ShaderMaterial_1mvxo")
+script = ExtResource("1_cjist")
+powerup_timer = NodePath("powerup_timer")
 
 [node name="powerup shape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xg77t")
 
-[node name="powerup sprite" type="Sprite2D" parent="."]
+[node name="powerup_timer" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="#1-TransparentIcons" type="Sprite2D" parent="."]
+texture_filter = 1
+use_parent_material = true
+scale = Vector2(2, 2)
+texture = ExtResource("2_dmi02")
+hframes = 16
+vframes = 27
+frame = 48
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="powerup_timer" to="." method="_on_powerup_timer_timeout"]

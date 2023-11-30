@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c25mji482b2if" path="res://Scenes/pistol_dmgup.tscn" id="3_0puyg"]
 
 [node name="UpgradeOptions" type="VBoxContainer" node_paths=PackedStringArray("upgradeLoader", "button")]
+texture_filter = 1
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 163.0

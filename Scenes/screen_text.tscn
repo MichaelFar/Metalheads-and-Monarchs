@@ -1,6 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bo7atiusshn2u"]
+[gd_scene load_steps=10 format=3 uid="uid://bo7atiusshn2u"]
 
 [ext_resource type="Script" path="res://screen_text.gd" id="1_d34rc"]
+[ext_resource type="PackedScene" uid="uid://bsr3kjhbg6ugv" path="res://Scenes/PistolDMG_upgrade_options.tscn" id="2_fdvia"]
+[ext_resource type="PackedScene" uid="uid://rnm00ioebdrk" path="res://Scenes/smgDMG_upgrade_options.tscn" id="3_l3g2q"]
+[ext_resource type="PackedScene" uid="uid://dam2syw2kjpvx" path="res://Scenes/shotgunSPREAD_upgrade_options.tscn" id="3_o2st3"]
+[ext_resource type="PackedScene" uid="uid://dy41a77wngh5g" path="res://Scenes/shotgunDMG_upgrade_options.tscn" id="3_uiagq"]
+[ext_resource type="PackedScene" uid="uid://d1yul46seg4gv" path="res://Scenes/shotgunAREA_upgrade_options.tscn" id="3_w8o7j"]
 
 [sub_resource type="SystemFont" id="SystemFont_7kyti"]
 
@@ -15,7 +20,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="ScreenText" type="Control" node_paths=PackedStringArray("game_timer", "text_node", "upgradePanel", "upgradeLabel")]
+[node name="ScreenText" type="Control" node_paths=PackedStringArray("game_timer", "text_node", "upgradePanel", "upgradeLabel", "upgradeOptions")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,6 +33,7 @@ game_timer = NodePath("Timer")
 text_node = NodePath("RichTextLabel")
 upgradePanel = NodePath("Panel")
 upgradeLabel = NodePath("Panel/lbl_upgrade")
+upgradeOptions = NodePath("UpgradeOptions")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
@@ -58,5 +64,8 @@ offset_right = 590.0
 offset_bottom = 34.0
 text = "CHOOSE AN UPGRADE!"
 horizontal_alignment = 1
+
+[node name="UpgradeOptions" type="ResourcePreloader" parent="."]
+resources = [PackedStringArray("PistolDMG_upgrade_options", "shotgunAREA_upgrade_options", "shotgunDMG_upgrade_options", "shotgunSPREAD_upgrade_options", "smgDMG_upgrade_options"), [ExtResource("2_fdvia"), ExtResource("3_w8o7j"), ExtResource("3_uiagq"), ExtResource("3_o2st3"), ExtResource("3_l3g2q")]]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

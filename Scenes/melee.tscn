@@ -2,46 +2,60 @@
 
 [ext_resource type="Script" path="res://Scripts/melee.gd" id="1_ynbrw"]
 [ext_resource type="PackedScene" uid="uid://8r5df653l7cy" path="res://Scenes/hitbox.tscn" id="2_dd1p0"]
-[ext_resource type="Texture2D" uid="uid://bifkxow6of372" path="res://Sprites/Melee.png" id="3_q1nhg"]
+[ext_resource type="Texture2D" uid="uid://0doxkc1q1xcg" path="res://Sprites/Melee Work Final 11_27.png" id="3_khwop"]
 
 [sub_resource type="Animation" id="Animation_p2lrl"]
 resource_name = "Melee"
-length = 0.5
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Melee:frame")
+tracks/0/path = NodePath("Hitbox/CollisionShape2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Hitbox/CollisionShape2D:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.4),
+"times": PackedFloat32Array(0, 0.1, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeleeWorkFinal1127:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"melee_finished"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_ep1vx"]
@@ -49,26 +63,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Melee:frame")
+tracks/0/path = NodePath("Hitbox/CollisionShape2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/1/path = NodePath("MeleeWorkFinal1127:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [8]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -90,8 +104,8 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8hlto"]
-radius = 23.0
-height = 56.0
+radius = 27.0
+height = 66.0
 
 [node name="melee" type="CharacterBody2D" node_paths=PackedStringArray("animationplayer")]
 visible = false
@@ -110,15 +124,17 @@ collision_layer = 10
 collision_mask = 8
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
-position = Vector2(0, -25)
+position = Vector2(-0.0001297, -36)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_8hlto")
 disabled = true
 
-[node name="Melee" type="Sprite2D" parent="."]
+[node name="MeleeWorkFinal1127" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("3_q1nhg")
-offset = Vector2(20, 0)
-vframes = 5
+texture = ExtResource("3_khwop")
+offset = Vector2(25, -7)
+hframes = 4
+vframes = 3
+frame = 8
 
 [editable path="Hitbox"]

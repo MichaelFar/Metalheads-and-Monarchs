@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var upgrade_coefficient = 1.15
+@export var upgrade_coefficient = 1.05
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("Upgrade added")

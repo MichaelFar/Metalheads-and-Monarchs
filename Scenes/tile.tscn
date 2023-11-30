@@ -5,10 +5,10 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_18lim"]
 
-[node name="Tile" type="Node2D" node_paths=PackedStringArray("sprite", "area", "TileDetector", "notifier")]
+[node name="Tile" type="Node2D" node_paths=PackedStringArray("sprite", "TileArea", "TileDetector", "notifier")]
 script = ExtResource("1_yxlpx")
 sprite = NodePath("BackroundColorTest2")
-area = NodePath("TileArea")
+TileArea = NodePath("TileArea")
 TileDetector = NodePath("TileDetector")
 notifier = NodePath("VisibleOnScreenNotifier2D")
 

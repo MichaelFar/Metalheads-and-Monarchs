@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcqb4j5m8nwkx"]
+
+[ext_resource type="Script" path="res://Scripts/numbgen.gd" id="1_qvksg"]
+[ext_resource type="PackedScene" uid="uid://ua7xvxetvysi" path="res://Scenes/vampire.tscn" id="2_8n1r6"]
+
+[node name="PowerUpContainer" type="Node2D" node_paths=PackedStringArray("powerUPResources")]
+script = ExtResource("1_qvksg")
+powerUPResources = NodePath("ResourcePreloader")
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="."]
+resources = [PackedStringArray("vampire"), [ExtResource("2_8n1r6")]]

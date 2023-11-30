@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://robkwpmohw8m"]
+
+[ext_resource type="PackedScene" uid="uid://c25mji482b2if" path="res://Scenes/pistol_dmgup.tscn" id="1_qps7t"]
+
+[sub_resource type="GDScript" id="GDScript_v4bje"]
+script/source = "extends Node2D
+
+@export var upgrade_coefficient = 0.95
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	print(\"Upgrade added\")
+	get_parent().set_stats(Globals.Stats.SPREADRANGE, get_parent().spreadRange * upgrade_coefficient)
+
+
+
+"
+
+[node name="shotgunSpreadDown" instance=ExtResource("1_qps7t")]
+script = SubResource("GDScript_v4bje")
+upgrade_coefficient = 0.95

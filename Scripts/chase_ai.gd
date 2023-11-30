@@ -12,6 +12,9 @@ var playerNode = null
 @export var healthbar : ProgressBar
 @export var animationPlayer : AnimationPlayer
 @export var ShaderLoader : ResourcePreloader
+@export var SpriteLoader : ResourcePreloader
+
+var blood_particles = preload("res://Scenes/blood_particles.tscn")
 
 var shaderList = []
 
@@ -26,6 +29,7 @@ func _ready():
 	Globals.game_timer.game_complete.connect(freeze)
 	Globals.activeEnemies.append(self)
 	shaderList = ShaderLoader.get_resource_list()
+	randomize_sprite()
 	random_speed()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -52,38 +56,46 @@ func _physics_process(delta):
 		
 		sprite.look_at(playerNode.global_position)
 		KBFrames += 1
+		
 		if(!KBApplied):
 	
 			velocity = velocity.move_toward(destination * max_speed, delta * acceleration)
 		else:
-			
 			
 			if(KBFrames / 5 == 1):
 				KBApplied = false
 				
 				
 		if(KBFrames / 15 == 1):
+			
 			material.set_shader_parameter("applied", false)
-			#print("Shader is now unapplied")
+			
 		move_and_slide()
 
 
 
 func _on_hurtbox_area_entered(area):
 	if(area.name == "Hitbox" && !area.owner.has_method("get_node_type")):
-		var destination = playerNode.global_position - global_position 
+		var blood_particles_scene = blood_particles.instantiate()
+		add_child(blood_particles_scene)
+		var destination = playerNode.global_position - global_position
 		destination = destination.normalized()
 		var hasKB = area.get_parent().has_KB
 		
 		health -= area.get_parent().damage
 		
 		healthbar.value = health
+		if(health <= 0.0 && area.get_parent() == Globals.melee):
+			Globals.player.health += 25.0
+			Globals.player.healthbar.healthbar.value = Globals.player.health
 		
 		velocity = -1.0 * destination * (max_speed * area.get_parent().KBStrength / 3.0) if hasKB else velocity
+		blood_particles_scene.process_material.direction = Vector3(velocity.x, velocity.y, 0)
 		set_shader_time()
 		material.set_shader_parameter("applied", true)
 		KBFrames = 0
 		KBApplied = true
+		blood_particles_scene.emitting = true
 		
 		
 func get_node_type():
@@ -100,4 +112,8 @@ func set_shader_time():
 	
 	material.set_shader_parameter("start_time", Time.get_ticks_msec() / 1000.0)#Give time in seconds since engine has started
 
-
+func randomize_sprite():
+	var randOBJ = RandomNumberGenerator.new()
+	var randIndex = randOBJ.randi_range(0, SpriteLoader.get_resource_list().size() - 1)
+	var selectedSprite = SpriteLoader.get_resource(SpriteLoader.get_resource_list()[randIndex])
+	sprite.texture = selectedSprite

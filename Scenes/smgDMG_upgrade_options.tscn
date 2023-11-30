@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://rnm00ioebdrk"]
+
+[ext_resource type="PackedScene" uid="uid://cyg0c1l3wav7m" path="res://Scenes/upgrade_options.tscn" id="1_4hmfl"]
+[ext_resource type="PackedScene" uid="uid://b1ydyipu4jhk0" path="res://Scenes/smg_dmgup.tscn" id="2_n2cjl"]
+
+[node name="UpgradeOptions" instance=ExtResource("1_4hmfl")]
+
+[node name="Label" parent="HBoxContainer" index="1"]
+text = "SMG dmg +5%"
+
+[node name="ResourcePreloader" parent="." index="1"]
+resources = [PackedStringArray("smg_dmgup"), [ExtResource("2_n2cjl")]]

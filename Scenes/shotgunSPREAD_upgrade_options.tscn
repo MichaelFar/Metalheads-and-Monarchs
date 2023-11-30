@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dam2syw2kjpvx"]
+
+[ext_resource type="PackedScene" uid="uid://cyg0c1l3wav7m" path="res://Scenes/upgrade_options.tscn" id="1_vg76l"]
+[ext_resource type="Texture2D" uid="uid://c42t456outohl" path="res://Sprites/Monarch Base Shotgun Final 11_12.png" id="2_ogxic"]
+[ext_resource type="PackedScene" uid="uid://robkwpmohw8m" path="res://Scenes/shotgun_spread_range.tscn" id="3_levsd"]
+
+[node name="UpgradeOptions" instance=ExtResource("1_vg76l")]
+
+[node name="MonarchBaseShotgunFinal1112" type="Sprite2D" parent="HBoxContainer" index="0"]
+position = Vector2(35, 15)
+texture = ExtResource("2_ogxic")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="MonarchBaseSmgFinal1113" parent="HBoxContainer" index="1"]
+visible = false
+
+[node name="Label" parent="HBoxContainer" index="2"]
+text = "Shotgun Spread Range - 5%"
+
+[node name="ResourcePreloader" parent="." index="1"]
+resources = [PackedStringArray("shotgun_spread_range"), [ExtResource("3_levsd")]]

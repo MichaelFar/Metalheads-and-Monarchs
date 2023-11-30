@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1yul46seg4gv"]
+
+[ext_resource type="PackedScene" uid="uid://cyg0c1l3wav7m" path="res://Scenes/upgrade_options.tscn" id="1_gqk33"]
+[ext_resource type="Texture2D" uid="uid://c42t456outohl" path="res://Sprites/Monarch Base Shotgun Final 11_12.png" id="2_3e3cg"]
+[ext_resource type="PackedScene" uid="uid://bpo6gngkc6ad5" path="res://Scenes/shotgun_areaup.tscn" id="2_vblox"]
+
+[node name="UpgradeOptions" instance=ExtResource("1_gqk33")]
+
+[node name="MonarchBaseShotgunFinal1112" type="Sprite2D" parent="HBoxContainer" index="0"]
+position = Vector2(46, 14)
+texture = ExtResource("2_3e3cg")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="MonarchBaseSmgFinal1113" parent="HBoxContainer" index="1"]
+visible = false
+
+[node name="Label" parent="HBoxContainer" index="2"]
+text = "Shotgun Bullet Size +10%"
+
+[node name="ResourcePreloader" parent="." index="1"]
+resources = [PackedStringArray("shotgun_areaup"), [ExtResource("2_vblox")]]

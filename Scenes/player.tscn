@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bctihlcscxsex"]
+[gd_scene load_steps=16 format=3 uid="uid://bctihlcscxsex"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_a1pkj"]
 [ext_resource type="PackedScene" uid="uid://bo7atiusshn2u" path="res://Scenes/screen_text.tscn" id="3_s6lj3"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://bmjjbqwr57nge" path="res://Scenes/spawner.tscn" id="9_5t8gu"]
 [ext_resource type="PackedScene" uid="uid://dbx3maukovag4" path="res://Scenes/legs_animator.tscn" id="11_22m4h"]
 [ext_resource type="PackedScene" uid="uid://0hgx1rerxlqc" path="res://Scenes/melee.tscn" id="12_p8p5p"]
-[ext_resource type="PackedScene" uid="uid://df2bhnlb7vf2d" path="res://Scenes/powerup.tscn" id="13_084ml"]
 [ext_resource type="PackedScene" uid="uid://q4ihp0pfa5a3" path="res://Scenes/visual_switcher.tscn" id="13_g7v4m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ckaxx"]
@@ -41,6 +40,7 @@ shape = SubResource("CircleShape2D_ckaxx")
 [node name="Graphics" type="Node2D" parent="."]
 
 [node name="visual_switcher" parent="Graphics" node_paths=PackedStringArray("weapon_switcher", "gun_offset") instance=ExtResource("13_g7v4m")]
+use_parent_material = true
 weapon_switcher = NodePath("../../Playerweapon_changer")
 gun_offset = NodePath("../Gun_offset")
 
@@ -86,18 +86,16 @@ shape = SubResource("CapsuleShape2D_8ddgn")
 
 [node name="legs_animator" parent="." node_paths=PackedStringArray("player") instance=ExtResource("11_22m4h")]
 z_index = -5
+use_parent_material = true
 player = NodePath("..")
 
+[node name="LegsTest1113" parent="legs_animator" index="1"]
+use_parent_material = true
+
 [node name="melee" parent="." instance=ExtResource("12_p8p5p")]
+use_parent_material = true
 
-[node name="powerup" parent="." instance=ExtResource("13_084ml")]
-
-[node name="powerup_timer" type="Timer" parent="powerup"]
-wait_time = 10.0
-
-[connection signal="area_entered" from="Graphics/Hurtbox" to="." method="_on_hurtbox_area_entered"]
-[connection signal="area_entered" from="powerup" to="." method="_on_powerup_area_entered"]
-[connection signal="timeout" from="powerup/powerup_timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 
 [editable path="Hurtbox"]
 [editable path="Control"]

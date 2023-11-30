@@ -56,11 +56,12 @@ _data = {
 }
 
 [node name="HitEffect" type="Node2D" node_paths=PackedStringArray("animationPlayer")]
+process_mode = 3
 script = ExtResource("1_iv217")
 animationPlayer = NodePath("AnimationPlayer")
 
 [node name="EffectImpact1291x301" type="Sprite2D" parent="."]
-scale = Vector2(0.35, 0.35)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("1_03r0y")
 hframes = 6
 vframes = 5

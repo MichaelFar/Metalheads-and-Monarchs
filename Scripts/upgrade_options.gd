@@ -7,7 +7,7 @@ var loadedUpgradeScene = null
 signal chosen_upgrade
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#position = Vector2(0, 25)
+	
 	name = "UpgradeOptions"
 	upgradeScene = upgradeLoader.get_resource_list()[0]
 	loadedUpgradeScene = upgradeLoader.get_resource(upgradeScene)

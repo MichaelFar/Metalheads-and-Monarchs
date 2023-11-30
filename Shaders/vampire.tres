@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bhvf65kb6agss"]
+
+[ext_resource type="Shader" path="res://Shaders/player.gdshader" id="1_kdf0k"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_kdf0k")
+shader_parameter/speed = 1.0
+shader_parameter/tint = Color(1, 0, 0.662745, 1)
+shader_parameter/span = 1.0
+shader_parameter/start_time = 0.0
+shader_parameter/applied = true

@@ -12,7 +12,9 @@ signal switched_weapon(int)
 @export var pistolModifiers : ResourcePreloader
 @export var smgModifiers : ResourcePreloader
 @export var shotgunModifiers : ResourcePreloader
+@export var powerUpNodes : Node2D
 func _ready():
+	
 	Globals.weapon_changer = self
 	weapons = bulletsList.get_resource_list()
 	current_weapon = bulletsList.get_resource(weapons[current_weapon_index])
@@ -59,6 +61,11 @@ func shoot():
 	for i in modList:
 		var loadMod = get_children()[current_weapon_index].get_resource(i).instantiate()
 		p.add_child(loadMod)
+	for i in powerUpNodes.get_children():
+		if(i.true_name == 'vampire'):
+			p.is_vampire = true
+			print("Power up obtained and current weapon is " + str(weapons[current_weapon_index]))
+		
 	cooldown_timer.wait_time = p.cooldown
 	shooting.emit(p.cooldown)
 	cooldown_timer.start()
@@ -73,3 +80,5 @@ func add_modifier_to_list(upgradeScene, loadedUpgradeScene):
 		smgModifiers.add_resource(upgradeScene, loadedUpgradeScene)
 	if('shotgun' in upgradeScene):
 		shotgunModifiers.add_resource(upgradeScene, loadedUpgradeScene)
+
+

@@ -6,8 +6,10 @@ var spawner = null#Spawner attached to the player
 var game_timer = null#screen_text scene
 var activeEnemies = []#Number of enemies that are active
 var weapon_changer = null#scene responsible for changing weapons
+var melee = null#reference to the player melee scene
 
-enum Stats {DAMAGE, SPREADRANGE, KBSTRENGTH, COOLDOWN, KBENABLED}
+
+enum Stats {DAMAGE, SPREADRANGE, KBSTRENGTH, COOLDOWN, KBENABLED, AREA}
 
 func reset_game():
 	var newPlayer = preload("res://Scenes/player.tscn")

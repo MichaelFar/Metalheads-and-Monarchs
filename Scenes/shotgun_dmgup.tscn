@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://brt44cjdfp0hx"]
+
+[ext_resource type="PackedScene" uid="uid://c25mji482b2if" path="res://Scenes/pistol_dmgup.tscn" id="1_cqcls"]
+
+[node name="pistolDMGUP" instance=ExtResource("1_cqcls")]

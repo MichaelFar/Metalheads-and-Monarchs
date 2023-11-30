@@ -4,3 +4,6 @@
 
 [node name="shotgun_spawner" type="CharacterBody2D"]
 script = ExtResource("1_geugo")
+damage = 5.0
+spreadRange = 400.0
+KBStrength = 3.5

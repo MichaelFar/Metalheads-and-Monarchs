@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpo6gngkc6ad5"]
+
+[ext_resource type="PackedScene" uid="uid://c25mji482b2if" path="res://Scenes/pistol_dmgup.tscn" id="1_gnp2t"]
+[ext_resource type="Script" path="res://Scripts/shotgun_size_up.gd" id="2_ewh5r"]
+
+[node name="shotgunAreaUp" instance=ExtResource("1_gnp2t")]
+script = ExtResource("2_ewh5r")
+upgrade_coefficient = 1.1

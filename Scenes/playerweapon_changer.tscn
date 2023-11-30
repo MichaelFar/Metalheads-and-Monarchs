@@ -1,13 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://qsyon56njct6"]
+[gd_scene load_steps=3 format=3 uid="uid://qsyon56njct6"]
 
 [ext_resource type="Script" path="res://Scripts/Playerweapon_changer.gd" id="1_gyrn8"]
+[ext_resource type="Script" path="res://Scripts/powerToShader.gd" id="2_kn3i3"]
 
-[node name="Playerweapon_changer" type="Node2D" node_paths=PackedStringArray("pistolModifiers", "smgModifiers", "shotgunModifiers")]
+[node name="Playerweapon_changer" type="Node2D" node_paths=PackedStringArray("pistolModifiers", "smgModifiers", "shotgunModifiers", "powerUpNodes")]
 position = Vector2(0, 1)
 script = ExtResource("1_gyrn8")
 pistolModifiers = NodePath("pistolModifiers")
 smgModifiers = NodePath("smgModifiers")
 shotgunModifiers = NodePath("shotgunModifiers")
+powerUpNodes = NodePath("powerList")
 
 [node name="pistolModifiers" type="ResourcePreloader" parent="."]
 
@@ -15,4 +17,8 @@ shotgunModifiers = NodePath("shotgunModifiers")
 
 [node name="shotgunModifiers" type="ResourcePreloader" parent="."]
 
-[node name="ResourcePreloader" type="ResourcePreloader" parent="."]
+[node name="powerList" type="Node2D" parent="."]
+script = ExtResource("2_kn3i3")
+
+[connection signal="child_entered_tree" from="powerList" to="powerList" method="_on_child_entered_tree"]
+[connection signal="child_exiting_tree" from="powerList" to="powerList" method="_on_child_exiting_tree"]
