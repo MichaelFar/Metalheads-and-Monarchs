@@ -51,3 +51,14 @@ func _on_area_exited(area):
 	if('bullet' in area.get_parent().name):
 		print("Deleting bullet")
 		area.get_parent().queue_free()
+
+func spawn_metal_head():
+	var randObj = RandomNumberGenerator.new()
+	var metal_head = preload("res://Scenes/metalhead_enemy.tscn")
+	var randx = randObj.randf_range(-1.0,1.0)
+	var randy = randObj.randf_range(-1.0,1.0)
+	var direction = Vector2(randx,randy).normalized()
+	metal_head = metal_head.instantiate()
+	Globals.currentLevel.add_child(metal_head)
+	metal_head.global_position = (spawn_magnitude * direction ) + global_position
+	metal_head.health += healthMod

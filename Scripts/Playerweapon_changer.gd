@@ -41,7 +41,6 @@ func switch_weapon(direction):
 	if current_weapon_index < 0:
 		current_weapon_index = weapons.size() - 1
 	
-	
 	current_weapon = bulletsList.get_resource(weapons[current_weapon_index])
 	
 	if(weapons[current_weapon_index] == 'bullet'):

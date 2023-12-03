@@ -52,6 +52,7 @@ libraries = {
 }
 
 [node name="LegsTest1113" type="Sprite2D" parent="."]
+z_index = -5
 texture_filter = 1
 rotation = -3.14159
 scale = Vector2(2.5, 2.5)

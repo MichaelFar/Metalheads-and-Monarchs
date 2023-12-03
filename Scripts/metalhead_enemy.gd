@@ -1,10 +1,12 @@
 extends CharacterBody2D
 
 var playerNode = null
+var move_dir = Vector2.ZERO
 
-var has_KB = false
+
+
 @export var acceleration = 600.0
-@export var max_speed = 450.0
+@export var max_speed = 900.0
 @export var damage = 10
 @export var RayCastContainer : CharacterBody2D
 @export var raycast = true
@@ -14,7 +16,12 @@ var has_KB = false
 @export var animationPlayer : AnimationPlayer
 @export var ShaderLoader : ResourcePreloader
 @export var SpriteLoader : ResourcePreloader
+@export var HitBox : Area2D
 
+
+
+var has_KB = true
+var KBStrength = 4.0
 var blood_particles = preload("res://Scenes/blood_particles.tscn")
 
 var shaderList = []
@@ -30,13 +37,14 @@ func _ready():
 	Globals.game_timer.game_complete.connect(freeze)
 	Globals.activeEnemies.append(self)
 	shaderList = ShaderLoader.get_resource_list()
-	name = "Archid"
-	randomize_sprite()
+	name = "Metalhead"
+	#randomize_sprite()
 	random_speed()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	frame += 1
+	
 	if(frame == 1):
 		
 		animationPlayer.play("walk")
@@ -49,13 +57,12 @@ func _physics_process(delta):
 		Globals.activeEnemies.pop_at(Globals.activeEnemies.find(self))
 		shouldStop = true
 		material = ShaderLoader.get_resource(ShaderLoader.get_resource_list()[0])
-		material.resource_local_to_scene = true
 		die()
 		
 	if(!shouldStop):
 		
 		var destination = playerNode.global_position - global_position 
-		
+		move_dir = destination
 		destination = destination.normalized()
 		
 		if(raycast):
@@ -126,16 +133,20 @@ func randomize_sprite():
 	var randIndex = randOBJ.randi_range(0, SpriteLoader.get_resource_list().size() - 1 - colorControl)
 	var selectedSprite = SpriteLoader.get_resource(SpriteLoader.get_resource_list()[randIndex])
 	sprite.texture = selectedSprite
-	
 func knock_back(area, destinationNode = null):
 	var hasKB = area.get_parent().has_KB
 	if(destinationNode == null):
 		destinationNode = playerNode
-	print("destinationNode is " + destinationNode.name)
 	var destination = destinationNode.global_position - global_position
 	destination = destination.normalized()
-	
 	velocity = -1.0 * destination * (max_speed * area.get_parent().KBStrength / 3.0) if hasKB else velocity
+
+func _on_hitbox_area_entered(area):
+	if(area.owner.has_method("get_node_type")):
+		if(area.owner.get_node_type() == 'enemy'):
+			print("Area owner entered is " + area.owner.name + " and area name is " + area.name)
+			if(area.name == "Hurtbox"):
+				area.owner.knock_back(HitBox, self)
 func die():
 	print("Will die")
 	

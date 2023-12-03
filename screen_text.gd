@@ -3,7 +3,7 @@ extends Control
 @export var game_timer : Timer
 
 @export var text_node : RichTextLabel
-@export var initialMinutes = 10
+@export var initialMinutes = 5
 @export var upgradePanel : Panel
 @export var upgradeLabel : Label
 @export var upgradeOptions : ResourcePreloader
@@ -13,6 +13,8 @@ var upgradePositions = []
 var totalEnemiesDefeated = 0
 var totalTimeSec = initialMinutes * 60
 var maxTime = totalTimeSec
+
+var metal_head_count = 1
 
 var minutes = totalTimeSec / 60
 var seconds = 0
@@ -61,7 +63,10 @@ func _on_timer_timeout():
 			Globals.spawner.spawn_enemies()
 			Globals.spawner.spawnMin += 1
 			Globals.spawner.spawnMax += 1
-		
+		if ((maxTime - totalTimeSec) % 60 == 0):
+			for i in range(metal_head_count):
+				Globals.spawner.spawn_metal_head()
+			metal_head_count += 1
 		if ((enemyScore + timeScore) % upgrade_target == 0 && enemyScore + timeScore != 0):
 			upgrade_target += 1000
 			upgrade_begin()
@@ -94,7 +99,9 @@ func game_over():
 	
 	if(!playerDied):
 		text_node.text = "GAME COMPLETE!!! \n Total Enemies Defeated: " + str(totalEnemiesDefeated) + totalScoreString
-	
+	else:
+		for i in range(3):
+			Globals.spawner.spawn_enemies()
 func update_placement():
 	
 	position.y = get_viewport_rect().size.y / -2.0

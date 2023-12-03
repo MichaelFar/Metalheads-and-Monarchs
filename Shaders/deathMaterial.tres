@@ -1,0 +1,28 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://vivaqsktyb1e"]
+
+[ext_resource type="Shader" path="res://Shaders/deathShader.gdshader" id="1_wqm62"]
+
+[sub_resource type="Gradient" id="Gradient_hdiw3"]
+offsets = PackedFloat32Array(0, 0.760766, 1)
+colors = PackedColorArray(1, 0.192157, 0, 1, 1, 0.192157, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_circ5"]
+gradient = SubResource("Gradient_hdiw3")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_iyld5"]
+noise_type = 3
+frequency = 0.0464
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rjswj"]
+noise = SubResource("FastNoiseLite_iyld5")
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_wqm62")
+shader_parameter/progress = 0.0
+shader_parameter/width = 0.2
+shader_parameter/timed = false
+shader_parameter/speed = 1.0
+shader_parameter/angle = 1.0
+shader_parameter/noise = SubResource("NoiseTexture2D_rjswj")
+shader_parameter/colorCurve = SubResource("GradientTexture2D_circ5")

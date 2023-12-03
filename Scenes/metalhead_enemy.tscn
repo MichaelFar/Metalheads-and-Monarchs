@@ -1,0 +1,174 @@
+[gd_scene load_steps=22 format=3 uid="uid://bme1ejhlo1keg"]
+
+[ext_resource type="Material" uid="uid://p24j6lbe2e5d" path="res://Shaders/chase_ai.tres" id="1_287bp"]
+[ext_resource type="Script" path="res://Scripts/metalhead_enemy.gd" id="1_g50wp"]
+[ext_resource type="Material" uid="uid://vivaqsktyb1e" path="res://Shaders/deathMaterial.tres" id="1_mmsel"]
+[ext_resource type="PackedScene" uid="uid://cscwrtnkcq8r5" path="res://Scenes/hurtbox.tscn" id="1_v6dl8"]
+[ext_resource type="Texture2D" uid="uid://b08yl81iy13q1" path="res://Sprites/Archid Spider Animation Final 11_3 .png" id="2_j6ast"]
+[ext_resource type="PackedScene" uid="uid://8r5df653l7cy" path="res://Scenes/hitbox.tscn" id="3_7uf8g"]
+[ext_resource type="PackedScene" uid="uid://cvbxgwoo58p56" path="res://Scenes/ray_cast_container.tscn" id="4_3pxru"]
+[ext_resource type="PackedScene" uid="uid://ch5u5wujtbli8" path="res://Scenes/healthbar.tscn" id="5_dm1g4"]
+[ext_resource type="PackedScene" uid="uid://bcqb4j5m8nwkx" path="res://Scenes/power_up_container.tscn" id="6_inx7u"]
+[ext_resource type="PackedScene" uid="uid://q7hg0b2lccuf" path="res://Scenes/blood_particles.tscn" id="7_rg2od"]
+[ext_resource type="Texture2D" uid="uid://cr1hkp53ix1l3" path="res://Sprites/Archid Spider Gold Final 11_29.png" id="8_ltd06"]
+[ext_resource type="Texture2D" uid="uid://cj30c86iursk5" path="res://Sprites/Archid Spider Blue Final 11_29(1).png" id="9_vsh2w"]
+[ext_resource type="Texture2D" uid="uid://ca2q2bvvg66y" path="res://Sprites/Archid Spider Purple Final 11_29 (2).png" id="10_5ki74"]
+[ext_resource type="Texture2D" uid="uid://dc3gi2figq5or" path="res://Sprites/Metal Heads Final.png" id="12_nn51a"]
+[ext_resource type="PackedScene" uid="uid://dbx3maukovag4" path="res://Scenes/legs_animator.tscn" id="13_3mr32"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_im5gr"]
+radius = 30.0
+height = 68.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pueye"]
+radius = 24.0
+height = 60.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_77s1p"]
+radius = 13.0
+
+[sub_resource type="Animation" id="Animation_63ymx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MetalHeadsFinal:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_cw7xv"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MetalHeadsFinal:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 3, 2, 1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yqaev"]
+_data = {
+"RESET": SubResource("Animation_63ymx"),
+"walk": SubResource("Animation_cw7xv")
+}
+
+[node name="metalhead_enemy" type="CharacterBody2D" node_paths=PackedStringArray("RayCastContainer", "sprite", "healthbar", "animationPlayer", "ShaderLoader", "SpriteLoader", "HitBox")]
+texture_filter = 1
+material = ExtResource("1_287bp")
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("1_g50wp")
+RayCastContainer = NodePath("RayCastContainer")
+sprite = NodePath("MetalHeadsFinal")
+healthbar = NodePath("Control/ProgressBar")
+animationPlayer = NodePath("AnimationPlayer")
+ShaderLoader = NodePath("ShaderLoader")
+SpriteLoader = NodePath("SpriteList")
+HitBox = NodePath("Hitbox")
+
+[node name="Hurtbox" parent="." instance=ExtResource("1_v6dl8")]
+collision_layer = 8
+collision_mask = 3
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CapsuleShape2D_im5gr")
+
+[node name="Hitbox" parent="." instance=ExtResource("3_7uf8g")]
+collision_mask = 3
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(26, 0)
+shape = SubResource("CapsuleShape2D_pueye")
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_77s1p")
+
+[node name="RayCastContainer" parent="." instance=ExtResource("4_3pxru")]
+
+[node name="Control" parent="." instance=ExtResource("5_dm1g4")]
+offset_left = -50.0
+offset_top = 23.0
+offset_right = -50.0
+offset_bottom = 23.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ProgressBar" parent="Control" index="0"]
+offset_left = 18.0
+offset_top = -70.0
+offset_right = 82.0
+offset_bottom = -61.0
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yqaev")
+}
+
+[node name="PowerUpContainer" parent="." instance=ExtResource("6_inx7u")]
+
+[node name="blood_particles" parent="." instance=ExtResource("7_rg2od")]
+emitting = false
+
+[node name="ShaderLoader" type="ResourcePreloader" parent="."]
+resources = [PackedStringArray("deathMaterial"), [ExtResource("1_mmsel")]]
+
+[node name="SpriteList" type="ResourcePreloader" parent="."]
+resources = [PackedStringArray("1Archid Spider Animation Final 11_3 ", "2Archid Spider Gold Final 11_29", "3Archid Spider Blue Final 11_29(1)", "4Archid Spider Purple Final 11_29 (2)"), [ExtResource("2_j6ast"), ExtResource("8_ltd06"), ExtResource("9_vsh2w"), ExtResource("10_5ki74")]]
+
+[node name="MetalHeadsFinal" type="Sprite2D" parent="."]
+use_parent_material = true
+texture = ExtResource("12_nn51a")
+offset = Vector2(25, -3)
+hframes = 5
+
+[node name="legs_animator" parent="." instance=ExtResource("13_3mr32")]
+
+[node name="LegsTest1113" parent="legs_animator" index="1"]
+modulate = Color(0, 0, 1, 1)
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+
+[editable path="Hurtbox"]
+[editable path="Hitbox"]
+[editable path="Control"]
+[editable path="legs_animator"]
