@@ -3,25 +3,22 @@ extends CharacterBody2D
 var playerNode = null
 var move_dir = Vector2.ZERO
 
-
-
 @export var acceleration = 600.0
-@export var max_speed = 900.0
-@export var damage = 10
+@export var max_speed = 500.0
+@export var damage = 15
 @export var RayCastContainer : CharacterBody2D
 @export var raycast = true
 @export var sprite : Sprite2D
-@export var health = 25.0
+@export var health = 100.0
 @export var healthbar : ProgressBar
 @export var animationPlayer : AnimationPlayer
 @export var ShaderLoader : ResourcePreloader
 @export var SpriteLoader : ResourcePreloader
 @export var HitBox : Area2D
-
-
+@export var legs : Node2D
 
 var has_KB = true
-var KBStrength = 4.0
+var KBStrength = 7.0
 var blood_particles = preload("res://Scenes/blood_particles.tscn")
 
 var shaderList = []
@@ -57,6 +54,7 @@ func _physics_process(delta):
 		Globals.activeEnemies.pop_at(Globals.activeEnemies.find(self))
 		shouldStop = true
 		material = ShaderLoader.get_resource(ShaderLoader.get_resource_list()[0])
+		damage = 0
 		die()
 		
 	if(!shouldStop):
@@ -142,16 +140,20 @@ func knock_back(area, destinationNode = null):
 	velocity = -1.0 * destination * (max_speed * area.get_parent().KBStrength / 3.0) if hasKB else velocity
 
 func _on_hitbox_area_entered(area):
-	if(area.owner.has_method("get_node_type")):
-		if(area.owner.get_node_type() == 'enemy'):
-			print("Area owner entered is " + area.owner.name + " and area name is " + area.name)
-			if(area.name == "Hurtbox"):
-				area.owner.knock_back(HitBox, self)
+	if(area != null):
+		if(area.owner.has_method("get_node_type")):
+			if(area.owner.get_node_type() == 'enemy'):
+				print("Area owner entered is " + area.owner.name + " and area name is " + area.name)
+				if(area.name == "Hurtbox"):
+					area.owner.knock_back(HitBox, self)
 func die():
 	print("Will die")
+	if(legs != null):
+		legs.queue_free()
 	
 	material.set_shader_parameter("progress", material.get_shader_parameter("progress") + 0.035)
 	if(material.get_shader_parameter("progress") >= 1.10):
 		Globals.game_timer.totalEnemiesDefeated += 1
 		material.set_shader_parameter("progress", 0.0)
+		
 		queue_free()

@@ -26,7 +26,6 @@ var upgrade_target = 800
 
 signal game_complete
 
-
 func _ready():
 	Globals.game_timer = self
 	text_node.text = update_text()
@@ -92,16 +91,22 @@ func time_score():
 	return ((maxTime - totalTimeSec) / 10) * 100
 
 func game_over():
+	
 	playerDied = !endGame
 	endGame = true
 	var totalScoreString = "\n" + "[center]Total Score is " + str((((maxTime - totalTimeSec) / 10) * 100) + totalEnemiesDefeated * 100) + "[/center]"
 	text_node.text = "GAME OVER \n Your final time was: " + update_text() + totalScoreString
 	
 	if(!playerDied):
+		
 		text_node.text = "GAME COMPLETE!!! \n Total Enemies Defeated: " + str(totalEnemiesDefeated) + totalScoreString
+	
 	else:
+		
 		for i in range(3):
+			
 			Globals.spawner.spawn_enemies()
+			
 func update_placement():
 	
 	position.y = get_viewport_rect().size.y / -2.0

@@ -105,7 +105,7 @@ _data = {
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8hlto"]
 radius = 27.0
-height = 66.0
+height = 96.0
 
 [node name="melee" type="CharacterBody2D" node_paths=PackedStringArray("animationplayer")]
 visible = false

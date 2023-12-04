@@ -14,6 +14,7 @@ var has_KB = false
 @export var animationPlayer : AnimationPlayer
 @export var ShaderLoader : ResourcePreloader
 @export var SpriteLoader : ResourcePreloader
+@export var Hurtbox : Area2D
 
 var blood_particles = preload("res://Scenes/blood_particles.tscn")
 
@@ -50,6 +51,7 @@ func _physics_process(delta):
 		shouldStop = true
 		material = ShaderLoader.get_resource(ShaderLoader.get_resource_list()[0])
 		material.resource_local_to_scene = true
+		damage = 0
 		die()
 		
 	if(!shouldStop):
@@ -89,7 +91,7 @@ func _on_hurtbox_area_entered(area):
 		healthbar.value = health
 		
 		if(health <= 0.0 && area.get_parent() == Globals.melee):
-			Globals.player.health += 25.0
+			Globals.player.health += 10.0
 			Globals.player.healthbar.healthbar.value = Globals.player.health
 		
 		knock_back(area)
@@ -136,10 +138,13 @@ func knock_back(area, destinationNode = null):
 	destination = destination.normalized()
 	
 	velocity = -1.0 * destination * (max_speed * area.get_parent().KBStrength / 3.0) if hasKB else velocity
+
 func die():
-	print("Will die")
+	
+	Hurtbox.monitorable = false
 	
 	material.set_shader_parameter("progress", material.get_shader_parameter("progress") + 0.035)
+	
 	if(material.get_shader_parameter("progress") >= 1.10):
 		Globals.game_timer.totalEnemiesDefeated += 1
 		material.set_shader_parameter("progress", 0.0)

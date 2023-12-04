@@ -73,7 +73,7 @@ _data = {
 "walk": SubResource("Animation_cw7xv")
 }
 
-[node name="ChaseAI" type="CharacterBody2D" node_paths=PackedStringArray("RayCastContainer", "sprite", "healthbar", "animationPlayer", "ShaderLoader", "SpriteLoader")]
+[node name="ChaseAI" type="CharacterBody2D" node_paths=PackedStringArray("RayCastContainer", "sprite", "healthbar", "animationPlayer", "ShaderLoader", "SpriteLoader", "Hurtbox")]
 material = SubResource("ShaderMaterial_ami45")
 collision_layer = 4
 collision_mask = 8
@@ -85,6 +85,7 @@ healthbar = NodePath("Control/ProgressBar")
 animationPlayer = NodePath("AnimationPlayer")
 ShaderLoader = NodePath("ShaderLoader")
 SpriteLoader = NodePath("SpriteList")
+Hurtbox = NodePath("Hurtbox")
 
 [node name="Hurtbox" parent="." instance=ExtResource("3_xa3rt")]
 collision_layer = 10

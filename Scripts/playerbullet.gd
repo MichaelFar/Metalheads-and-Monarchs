@@ -8,6 +8,8 @@ extends CharacterBody2D
 @export var cooldown = 0.3
 @export var has_KB = true
 @export var powerupList : Node2D
+@export var shoot_sound : Resource
+@export var shootNoise : AudioStreamPlayer
 var hit_effect = null
 var is_vampire = false
 var yInfluence = 0.0
@@ -17,6 +19,7 @@ var influenceVector = Vector2.ZERO
 func _ready():
 	hit_effect = preload("res://Scenes/hit_effect.tscn")
 	look_at(transform.x)
+	
 	var randObj = RandomNumberGenerator.new()
 	xInfluence = randObj.randf_range(-1.0 * spreadRange, spreadRange)
 	yInfluence = randObj.randf_range(-1.0 * spreadRange, spreadRange)

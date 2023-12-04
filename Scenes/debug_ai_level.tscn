@@ -1,12 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnv1w6ppv64mp"]
+[gd_scene load_steps=4 format=3 uid="uid://cnv1w6ppv64mp"]
 
 [ext_resource type="PackedScene" uid="uid://bctihlcscxsex" path="res://Scenes/player.tscn" id="1_hi61g"]
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_wldbb"]
+[ext_resource type="AudioStream" uid="uid://kvmwbged25ue" path="res://Audio/Copyright free track.wav" id="3_j35a5"]
 
-[node name="debugAILevel" type="Node2D" node_paths=PackedStringArray("playerNode")]
+[node name="debugAILevel" type="Node2D" node_paths=PackedStringArray("playerNode", "musicPlayer")]
 script = ExtResource("1_wldbb")
 playerNode = NodePath("Player")
+musicPlayer = NodePath("AudioStreamPlayer")
 
 [node name="Player" parent="." instance=ExtResource("1_hi61g")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("3_j35a5")
+volume_db = -11.14
 
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]

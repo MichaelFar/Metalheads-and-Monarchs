@@ -11,6 +11,7 @@ var power_up_active = false
 @export var player_weapon_changer : Node2D
 @export var melee : CharacterBody2D
 
+var is_over = false
 var move_dir = Vector2.ZERO
 
 signal has_died
@@ -25,14 +26,16 @@ func _ready():
 
 func _physics_process(delta):
 	
-	if(health >= 0.0):
-		move_dir = Input.get_vector("Left", "Right", "Up", "Down")
-		graphics.look_at(get_global_mouse_position())
-		velocity = move_dir * move_speed
-		
-		move_and_slide()
-	else:
-		has_died.emit()
+	if(!is_over):
+		if(health >= 0.0):
+			move_dir = Input.get_vector("Left", "Right", "Up", "Down")
+			graphics.look_at(get_global_mouse_position())
+			velocity = move_dir * move_speed
+			
+			move_and_slide()
+		else:
+			is_over = true
+			has_died.emit()
 	
 func _on_hurtbox_area_entered(area):
 	
