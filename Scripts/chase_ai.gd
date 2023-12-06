@@ -3,6 +3,7 @@ extends CharacterBody2D
 var playerNode = null
 
 var has_KB = false
+
 @export var acceleration = 600.0
 @export var max_speed = 450.0
 @export var damage = 10

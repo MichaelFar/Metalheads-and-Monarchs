@@ -29,6 +29,7 @@ script = ExtResource("2_kn3i3")
 resources = [PackedStringArray("1pistol", "2SMG", "3shotgun"), [ExtResource("3_d441d"), ExtResource("4_pl7lv"), ExtResource("3_dev00")]]
 
 [node name="shootNoise" type="AudioStreamPlayer" parent="."]
+volume_db = -8.443
 
 [connection signal="child_entered_tree" from="powerList" to="powerList" method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="powerList" to="powerList" method="_on_child_exiting_tree"]

@@ -10,6 +10,7 @@ var weapons = []
 @export var powerUpNodes : Node2D
 @export var soundPreloader : ResourcePreloader
 @export var shoot_noise : AudioStreamPlayer
+
 var current_weapon_index = 0
 var current_weapon = null
 var sound_list = []
