@@ -72,7 +72,7 @@ func shoot():
 	Globals.currentLevel.add_child(p)
 	p.global_transform = gun_offset.global_transform
 	shoot_noise.stream = sound_list[current_weapon_index]
-	shoot_noise.play()
+	shoot_noise.playing = true
 	for i in modList:
 		var loadMod = get_children()[current_weapon_index].get_resource(i).instantiate()
 		p.add_child(loadMod)

@@ -16,7 +16,7 @@ var move_dir = Vector2.ZERO
 @export var SpriteLoader : ResourcePreloader
 @export var HitBox : Area2D
 @export var legs : Node2D
-@export var sound : AudioStreamPlayer2D
+@export var sound : AudioStreamPlayer
 
 var has_KB = true
 var KBStrength = 7.0
@@ -36,7 +36,7 @@ func _ready():
 	Globals.activeEnemies.append(self)
 	shaderList = ShaderLoader.get_resource_list()
 	name = "Metalhead"
-	sound.play()
+	sound.playing = true
 	random_speed()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

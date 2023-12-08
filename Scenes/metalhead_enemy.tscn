@@ -1,10 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://bme1ejhlo1keg"]
+[gd_scene load_steps=22 format=3 uid="uid://bme1ejhlo1keg"]
 
 [ext_resource type="Material" uid="uid://p24j6lbe2e5d" path="res://Shaders/chase_ai.tres" id="1_287bp"]
 [ext_resource type="Script" path="res://Scripts/metalhead_enemy.gd" id="1_g50wp"]
 [ext_resource type="Material" uid="uid://vivaqsktyb1e" path="res://Shaders/deathMaterial.tres" id="1_mmsel"]
 [ext_resource type="PackedScene" uid="uid://cscwrtnkcq8r5" path="res://Scenes/hurtbox.tscn" id="1_v6dl8"]
-[ext_resource type="Texture2D" uid="uid://b08yl81iy13q1" path="res://Sprites/Archid Spider Animation Final 11_3 .png" id="2_j6ast"]
 [ext_resource type="PackedScene" uid="uid://8r5df653l7cy" path="res://Scenes/hitbox.tscn" id="3_7uf8g"]
 [ext_resource type="PackedScene" uid="uid://cvbxgwoo58p56" path="res://Scenes/ray_cast_container.tscn" id="4_3pxru"]
 [ext_resource type="PackedScene" uid="uid://ch5u5wujtbli8" path="res://Scenes/healthbar.tscn" id="5_dm1g4"]
@@ -91,7 +90,7 @@ _data = {
 "walk": SubResource("Animation_cw7xv")
 }
 
-[node name="metalhead_enemy" type="CharacterBody2D" node_paths=PackedStringArray("RayCastContainer", "sprite", "healthbar", "animationPlayer", "ShaderLoader", "SpriteLoader", "HitBox", "legs")]
+[node name="metalhead_enemy" type="CharacterBody2D" node_paths=PackedStringArray("RayCastContainer", "sprite", "healthbar", "animationPlayer", "ShaderLoader", "SpriteLoader", "HitBox", "legs", "sound")]
 texture_filter = 1
 material = ExtResource("1_287bp")
 collision_layer = 4
@@ -105,6 +104,7 @@ ShaderLoader = NodePath("ShaderLoader")
 SpriteLoader = NodePath("SpriteList")
 HitBox = NodePath("Hitbox")
 legs = NodePath("legs_animator")
+sound = NodePath("AudioStreamPlayer")
 
 [node name="Hurtbox" parent="." instance=ExtResource("1_v6dl8")]
 collision_layer = 8
@@ -154,7 +154,7 @@ emitting = false
 resources = [PackedStringArray("deathMaterial"), [ExtResource("1_mmsel")]]
 
 [node name="SpriteList" type="ResourcePreloader" parent="."]
-resources = [PackedStringArray("1Archid Spider Animation Final 11_3 ", "2Archid Spider Gold Final 11_29", "3Archid Spider Blue Final 11_29(1)", "4Archid Spider Purple Final 11_29 (2)"), [ExtResource("2_j6ast"), ExtResource("8_ltd06"), ExtResource("9_vsh2w"), ExtResource("10_5ki74")]]
+resources = [PackedStringArray("2Archid Spider Gold Final 11_29", "3Archid Spider Blue Final 11_29(1)", "4Archid Spider Purple Final 11_29 (2)"), [ExtResource("8_ltd06"), ExtResource("9_vsh2w"), ExtResource("10_5ki74")]]
 
 [node name="MetalHeadsFinal" type="Sprite2D" parent="."]
 use_parent_material = true
@@ -168,7 +168,7 @@ use_parent_material = true
 [node name="LegsTest1113" parent="legs_animator" index="1"]
 modulate = Color(0, 0, 1, 1)
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_54gby")
 bus = &"Shawn"
 
