@@ -10,10 +10,7 @@ var melee = null#reference to the player melee scene
 var music_player = null
 var current_level
 
-
 enum Stats {DAMAGE, SPREADRANGE, KBSTRENGTH, COOLDOWN, KBENABLED, AREA}
-
-
 
 func reset_game():
 	
@@ -29,7 +26,6 @@ func reset_game():
 	currentLevel.add_child(tile)
 	currentLevel.add_child(newPlayer)
 	player = newPlayer
-	
 	
 func _process(delta):
 	if(Input.is_action_just_released('restart')):

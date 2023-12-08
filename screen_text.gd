@@ -31,7 +31,7 @@ func _ready():
 	text_node.text = update_text()
 	update_placement()
 	get_viewport().size_changed.connect(update_placement)
-	#upgrade_begin()
+	
 	upgradePanel.hide()
 	
 func _process(delta):
@@ -85,7 +85,10 @@ func update_text():
 	return actual_string
 
 func enemy_score():
+	
+	
 	return totalEnemiesDefeated * 100
+	
 func time_score():
 	
 	return ((maxTime - totalTimeSec) / 10) * 100

@@ -16,6 +16,7 @@ var move_dir = Vector2.ZERO
 @export var SpriteLoader : ResourcePreloader
 @export var HitBox : Area2D
 @export var legs : Node2D
+@export var sound : AudioStreamPlayer2D
 
 var has_KB = true
 var KBStrength = 7.0
@@ -35,7 +36,7 @@ func _ready():
 	Globals.activeEnemies.append(self)
 	shaderList = ShaderLoader.get_resource_list()
 	name = "Metalhead"
-	#randomize_sprite()
+	sound.play()
 	random_speed()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -132,6 +133,7 @@ func randomize_sprite():
 	var selectedSprite = SpriteLoader.get_resource(SpriteLoader.get_resource_list()[randIndex])
 	sprite.texture = selectedSprite
 func knock_back(area, destinationNode = null):
+	
 	var hasKB = area.get_parent().has_KB
 	if(destinationNode == null):
 		destinationNode = playerNode

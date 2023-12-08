@@ -70,6 +70,7 @@ _data = {
 }
 
 [node name="menuContainer" type="Node2D"]
+texture_filter = 1
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -5
@@ -89,7 +90,7 @@ planet = NodePath("AnimationPlayer")
 backGround = NodePath("../Background")
 
 [node name="Story panel" type="Panel" parent="Title Screen"]
-self_modulate = Color(1, 1, 1, 0.0980392)
+self_modulate = Color(1, 0.0784314, 1, 0.533333)
 layout_mode = 0
 offset_left = 910.0
 offset_top = 72.0
@@ -98,6 +99,7 @@ offset_bottom = 642.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_hen72")
 
 [node name="Body" type="Label" parent="Title Screen/Story panel"]
+modulate = Color(0.976471, 1, 0, 1)
 layout_mode = 0
 offset_top = 59.0
 offset_right = 242.0
@@ -131,31 +133,42 @@ text = "Story"
 horizontal_alignment = 1
 
 [node name="Credits panel" type="Panel" parent="Title Screen"]
-self_modulate = Color(1, 1, 1, 0.0980392)
+self_modulate = Color(1, 0.0784314, 1, 0.533333)
 layout_mode = 0
-offset_top = 76.0
-offset_right = 222.0
-offset_bottom = 642.0
+offset_top = 44.0
+offset_right = 263.0
+offset_bottom = 644.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_hen72")
 
 [node name="Body" type="Label" parent="Title Screen/Credits panel"]
+modulate = Color(0.976471, 1, 0, 1)
 layout_mode = 0
-offset_top = 63.0
-offset_right = 225.0
-offset_bottom = 576.0
+offset_left = 37.0
+offset_top = 44.0
+offset_right = 262.0
+offset_bottom = 592.0
 theme_override_colors/font_color = Color(0.72549, 0.772549, 0.811765, 1)
 theme_override_font_sizes/font_size = 18
-text = "Shawn Williams
+text = "Shawn Williams 
+- Jr. Code Monkey
+-The 'ideas' guy
+
 Michael Farrar
+- Sr. Code Monkey
+
 Aedan Gifford
-Brocky \"Brock\" Eastman
+- Flameo Artman
+
+Brock Eastman
+- Chief Executive Splicer
 
 Special Thanks to:
-
 Deep-Fold
+- Cosmic Genius
 
+Noah Angel
+- Title Theme
 "
-horizontal_alignment = 1
 
 [node name="Title" type="Label" parent="Title Screen/Credits panel"]
 layout_mode = 0

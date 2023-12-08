@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c4fqpkycnh1fq"
+path="res://.godot/imported/smg pitch up.wav-efc7731895ae4a03f32083cbfc4a35d6.sample"
+
+[deps]
+
+source_file="res://Audio/smg pitch up.wav"
+dest_files=["res://.godot/imported/smg pitch up.wav-efc7731895ae4a03f32083cbfc4a35d6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

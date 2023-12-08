@@ -1,0 +1,33 @@
+[gd_resource type="AudioBusLayout" load_steps=4 format=3 uid="uid://c8jfwulu2bkgn"]
+
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_rkxr2"]
+resource_name = "Distortion"
+drive = 0.3
+
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_nqh56"]
+resource_name = "Distortion"
+drive = 0.51
+
+[sub_resource type="AudioEffectPhaser" id="AudioEffectPhaser_siff3"]
+resource_name = "Phaser"
+feedback = 0.2
+
+[resource]
+bus/1/name = &"Guns"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectDistortion_rkxr2")
+bus/1/effect/0/enabled = true
+bus/2/name = &"Shawn"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = -1.12151
+bus/2/send = &"Master"
+bus/2/effect/0/effect = SubResource("AudioEffectDistortion_nqh56")
+bus/2/effect/0/enabled = false
+bus/2/effect/1/effect = SubResource("AudioEffectPhaser_siff3")
+bus/2/effect/1/enabled = true

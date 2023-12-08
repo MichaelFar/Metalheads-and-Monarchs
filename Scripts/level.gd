@@ -12,6 +12,7 @@ func _ready():
 	add_child(load("res://Scenes/map_tiler.tscn").instantiate())
 	musicPlayer.playing = true
 	Globals.music_player = musicPlayer
+	get_window().content_scale_mode = 0
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

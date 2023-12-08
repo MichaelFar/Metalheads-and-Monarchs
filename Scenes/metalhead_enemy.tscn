@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bme1ejhlo1keg"]
+[gd_scene load_steps=23 format=3 uid="uid://bme1ejhlo1keg"]
 
 [ext_resource type="Material" uid="uid://p24j6lbe2e5d" path="res://Shaders/chase_ai.tres" id="1_287bp"]
 [ext_resource type="Script" path="res://Scripts/metalhead_enemy.gd" id="1_g50wp"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://ca2q2bvvg66y" path="res://Sprites/Archid Spider Purple Final 11_29 (2).png" id="10_5ki74"]
 [ext_resource type="PackedScene" uid="uid://dbx3maukovag4" path="res://Scenes/legs_animator.tscn" id="13_3mr32"]
 [ext_resource type="Texture2D" uid="uid://bqw2qd8knmxi6" path="res://Sprites/Metal Heads Final_with_swipe.png" id="14_0hrhj"]
+[ext_resource type="AudioStream" uid="uid://btfc0ido5vw0s" path="res://Audio/Metalhead Voice Line.wav" id="16_54gby"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_im5gr"]
 radius = 30.0
@@ -167,10 +168,15 @@ use_parent_material = true
 [node name="LegsTest1113" parent="legs_animator" index="1"]
 modulate = Color(0, 0, 1, 1)
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_54gby")
+bus = &"Shawn"
+
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 
 [editable path="Hurtbox"]
 [editable path="Hitbox"]
+[editable path="RayCastContainer"]
 [editable path="Control"]
 [editable path="legs_animator"]
