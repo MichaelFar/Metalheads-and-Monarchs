@@ -101,6 +101,8 @@ func game_over():
 	var totalScoreString = "\n" + "[center]Total Score is " + str((((maxTime - totalTimeSec) / 10) * 100) + totalEnemiesDefeated * 100) + "[/center]"
 	text_node.text = "GAME OVER \n Your final time was: " + update_text() + totalScoreString
 	
+	$"Game Over".play()
+	
 	if(!playerDied):
 		
 		text_node.text = "GAME COMPLETE!!! \n Total Enemies Defeated: " + str(totalEnemiesDefeated) + totalScoreString
@@ -138,7 +140,8 @@ func set_panel_height():
 func upgrade_begin():
 	
 	get_tree().paused = !get_tree().paused
-	upgradePanel.show()
+	upgradePanel.show() 
+	$Upgrade.play()
 	var upgrade_list = populate_options()
 	
 	for i in range(3):

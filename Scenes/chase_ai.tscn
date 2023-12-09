@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dsxko2cc242t4"]
+[gd_scene load_steps=24 format=3 uid="uid://dsxko2cc242t4"]
 
 [ext_resource type="Shader" path="res://Shaders/player.gdshader" id="1_gbn7i"]
 [ext_resource type="Script" path="res://Scripts/chase_ai.gd" id="1_gy7b7"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://cj30c86iursk5" path="res://Sprites/Archid Spider Blue Final 11_29(1).png" id="10_llquf"]
 [ext_resource type="Texture2D" uid="uid://ca2q2bvvg66y" path="res://Sprites/Archid Spider Purple Final 11_29 (2).png" id="10_ommsv"]
 [ext_resource type="Texture2D" uid="uid://cr1hkp53ix1l3" path="res://Sprites/Archid Spider Gold Final 11_29.png" id="11_ogxg7"]
+[ext_resource type="AudioStream" uid="uid://caahhwdk4vg8m" path="res://Audio/Spider Sound.wav" id="15_yiml0"]
+[ext_resource type="Script" path="res://Scripts/Sound Trigger Spider.gd" id="16_8ocs5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ami45"]
 resource_local_to_scene = true
@@ -138,6 +140,13 @@ emitting = false
 
 [node name="SpriteList" type="ResourcePreloader" parent="."]
 resources = [PackedStringArray("1Archid Spider Animation Final 11_3 ", "2Archid Spider Gold Final 11_29", "3Archid Spider Blue Final 11_29(1)", "4Archid Spider Purple Final 11_29 (2)"), [ExtResource("6_1tjxg"), ExtResource("11_ogxg7"), ExtResource("10_llquf"), ExtResource("10_ommsv")]]
+
+[node name="Spider Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_yiml0")
+bus = &"Spider Sound"
+
+[node name="Sound Trigger Spider" type="Node2D" parent="."]
+script = ExtResource("16_8ocs5")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 

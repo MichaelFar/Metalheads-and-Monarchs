@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dsiyir71unsyc" path="res://Scenes/PlayerSPDupgrade_options.tscn" id="3_g8ibr"]
 [ext_resource type="PackedScene" uid="uid://rnm00ioebdrk" path="res://Scenes/smgDMG_upgrade_options.tscn" id="3_l3g2q"]
 [ext_resource type="PackedScene" uid="uid://dy41a77wngh5g" path="res://Scenes/shotgunDMG_upgrade_options.tscn" id="3_uiagq"]
+[ext_resource type="AudioStream" uid="uid://begf4cp33rexl" path="res://Audio/Game Over.wav" id="5_ljjgf"]
+[ext_resource type="AudioStream" uid="uid://dutkm3sl8glki" path="res://Audio/Upgrade.wav" id="6_pam7w"]
 
 [sub_resource type="SystemFont" id="SystemFont_7kyti"]
 
@@ -67,5 +69,13 @@ horizontal_alignment = 1
 
 [node name="UpgradeOptions" type="ResourcePreloader" parent="."]
 resources = [PackedStringArray("PistolDMG_upgrade_options", "PlayerHEALTH_upgrade_options", "PlayerSPDupgrade_options", "shotgunDMG_upgrade_options", "smgDMG_upgrade_options"), [ExtResource("2_fdvia"), ExtResource("3_05r4q"), ExtResource("3_g8ibr"), ExtResource("3_uiagq"), ExtResource("3_l3g2q")]]
+
+[node name="Game Over" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ljjgf")
+bus = &"Game Over"
+
+[node name="Upgrade" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_pam7w")
+bus = &"Upgrade"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
