@@ -39,10 +39,22 @@ func spawn_new_tile(g_positionOfNewTile):
 		
 		tileSize = tileInstance.tileSize
 		tileInstance.global_position = g_positionOfNewTile
+
+func intial_tile(g_positionOfNewTile):
+	var randOBJ = RandomNumberGenerator.new()
+	var randIndex = randOBJ.randi_range(0, tileList.size() - 1)
+	var tileInstance = TileResources.get_resource(tileList[randIndex])
+	tileInstance = tileInstance.instantiate()
+	Globals.currentLevel.add_child(tileInstance)
+	Globals.currentLevel.tileCount += 1
+	tileInstance.mustSpawnNeighbor.connect(spawn_new_tile)
 	
+	tileSize = tileInstance.tileSize
+	tileInstance.global_position = g_positionOfNewTile
+
 func spawn_initial_tiles():
 	for i in range(dimensions.x - 1):
 		for j in range(dimensions.y - 1):
-			spawn_new_tile(Vector2(i * tileSize.x, j * tileSize.y))
+			intial_tile(Vector2(i * tileSize.x, j * tileSize.y))
 func subtract_count():
 	totalTiles -= 1

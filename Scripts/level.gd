@@ -21,3 +21,7 @@ func _process(delta):
 
 func _on_child_exiting_tree(node):
 	print("Number of children is " + str(get_children().size()))
+
+
+func _on_audio_stream_player_finished():
+	musicPlayer.play()

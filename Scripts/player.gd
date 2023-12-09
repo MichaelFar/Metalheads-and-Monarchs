@@ -11,6 +11,7 @@ var power_up_active = false
 @export var player_weapon_changer : Node2D
 @export var melee : CharacterBody2D
 
+
 var is_over = false
 var move_dir = Vector2.ZERO
 
@@ -53,3 +54,10 @@ func show_graphic():
 	
 func hide_graphic():
 	graphics.hide()
+
+func heal(amount):
+	health += amount
+	health = clampf(health, -1.0, max_health)
+func adjust_max_health(amount):
+	max_health += amount
+	healthbar.healthbar.max_value += amount

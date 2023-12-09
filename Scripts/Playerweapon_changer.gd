@@ -96,5 +96,7 @@ func add_modifier_to_list(upgradeScene, loadedUpgradeScene):
 		smgModifiers.add_resource(upgradeScene, loadedUpgradeScene)
 	if('shotgun' in upgradeScene):
 		shotgunModifiers.add_resource(upgradeScene, loadedUpgradeScene)
-
+	if('player' in upgradeScene):
+		
+		Globals.player.add_child(loadedUpgradeScene.instantiate())
 

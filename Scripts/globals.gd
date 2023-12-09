@@ -11,6 +11,7 @@ var music_player = null
 var current_level
 
 enum Stats {DAMAGE, SPREADRANGE, KBSTRENGTH, COOLDOWN, KBENABLED, AREA}
+enum PlayerStats {SPEED, HEALTH}
 
 func reset_game():
 	
@@ -18,12 +19,14 @@ func reset_game():
 	var tile = preload("res://Scenes/map_tiler.tscn")
 	
 	for i in currentLevel.get_children():
-		i.queue_free()
+		if !(i is AudioStreamPlayer):
+			i.queue_free()
 	activeEnemies = []
 	
 	newPlayer = newPlayer.instantiate()
 	tile = tile.instantiate()
-	currentLevel.add_child(tile)
+	currentLevel.call_deferred("add_child", tile)
+	
 	currentLevel.add_child(newPlayer)
 	player = newPlayer
 	

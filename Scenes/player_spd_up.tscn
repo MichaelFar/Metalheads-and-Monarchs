@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj564id0oiwaf"]
+
+[ext_resource type="PackedScene" uid="uid://c25mji482b2if" path="res://Scenes/pistol_dmgup.tscn" id="1_s075d"]
+[ext_resource type="Script" path="res://Scripts/playerSPDUp.gd" id="2_nho7y"]
+
+[node name="playerSPDUp" instance=ExtResource("1_s075d")]
+script = ExtResource("2_nho7y")
+upgrade_coefficient = 1.1

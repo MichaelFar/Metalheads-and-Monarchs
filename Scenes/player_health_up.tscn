@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://u3u5adisney6"]
+
+[ext_resource type="PackedScene" uid="uid://bj564id0oiwaf" path="res://Scenes/player_spd_up.tscn" id="1_x3gxn"]
+[ext_resource type="Script" path="res://Scripts/playerHEALTHUp.gd" id="2_kskxq"]
+
+[node name="playerHEALTHUp" instance=ExtResource("1_x3gxn")]
+script = ExtResource("2_kskxq")
+upgrade_coefficient = 0.1

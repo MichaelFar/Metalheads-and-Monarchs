@@ -17,3 +17,4 @@ stream = ExtResource("3_j35a5")
 volume_db = -9.416
 
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

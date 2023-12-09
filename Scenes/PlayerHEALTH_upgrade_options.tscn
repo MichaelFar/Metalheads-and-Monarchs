@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxubpsbrseye6"]
+
+[ext_resource type="PackedScene" uid="uid://dsiyir71unsyc" path="res://Scenes/PlayerSPDupgrade_options.tscn" id="1_gbf0x"]
+[ext_resource type="PackedScene" uid="uid://u3u5adisney6" path="res://Scenes/player_health_up.tscn" id="2_utk3j"]
+
+[node name="UpgradeOptions" instance=ExtResource("1_gbf0x")]
+
+[node name="Label" parent="HBoxContainer" index="1"]
+texture_filter = 0
+text = "Health Up +10%"
+
+[node name="ResourcePreloader" parent="." index="1"]
+resources = [PackedStringArray("player_health_up"), [ExtResource("2_utk3j")]]
