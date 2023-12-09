@@ -1,9 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://dcltro37uemxv"]
+[gd_scene load_steps=15 format=3 uid="uid://dcltro37uemxv"]
 
 [ext_resource type="Texture2D" uid="uid://cmchh1yos8q21" path="res://Sprites/Space Background Blue.png" id="1_8pyi5"]
 [ext_resource type="FontFile" uid="uid://cpfep658124ya" path="res://RoSpritendoSemiboldBeta-vmVwZ.otf" id="1_ejiwc"]
 [ext_resource type="Script" path="res://Scripts/start_button.gd" id="2_nx8mh"]
 [ext_resource type="Texture2D" uid="uid://cxqvr3l00ri8k" path="res://Title Option 1 Red Planet Fixed.png" id="4_agxqw"]
+[ext_resource type="AudioStream" uid="uid://bwqbknosehawt" path="res://Audio/Title Screen Option 4.wav" id="5_4sk2f"]
+[ext_resource type="Script" path="res://Scripts/Title Name Trigger.gd" id="6_u3knw"]
+[ext_resource type="AudioStream" uid="uid://0c76mmqa1ij4" path="res://Audio/gtrMain1.wav" id="7_3yr75"]
+[ext_resource type="Script" path="res://Scripts/Title Theme Trigger.gd" id="8_doe2v"]
 
 [sub_resource type="GDScript" id="GDScript_xp3ch"]
 script/source = "extends Control
@@ -92,18 +96,18 @@ backGround = NodePath("../Background")
 [node name="Story panel" type="Panel" parent="Title Screen"]
 self_modulate = Color(1, 0.0784314, 1, 0.533333)
 layout_mode = 0
-offset_left = 910.0
-offset_top = 72.0
+offset_left = 896.0
+offset_top = 59.0
 offset_right = 1156.0
-offset_bottom = 642.0
+offset_bottom = 650.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_hen72")
 
 [node name="Body" type="Label" parent="Title Screen/Story panel"]
 modulate = Color(0.976471, 1, 0, 1)
 layout_mode = 0
 offset_top = 59.0
-offset_right = 242.0
-offset_bottom = 572.0
+offset_right = 245.0
+offset_bottom = 569.0
 theme_override_colors/font_color = Color(0.72549, 0.772549, 0.811765, 1)
 theme_override_font_sizes/font_size = 16
 text = "You were sent on a mission by
@@ -135,9 +139,9 @@ horizontal_alignment = 1
 [node name="Credits panel" type="Panel" parent="Title Screen"]
 self_modulate = Color(1, 0.0784314, 1, 0.533333)
 layout_mode = 0
-offset_top = 44.0
-offset_right = 263.0
-offset_bottom = 644.0
+offset_top = 60.0
+offset_right = 244.0
+offset_bottom = 650.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_hen72")
 
 [node name="Body" type="Label" parent="Title Screen/Credits panel"]
@@ -217,6 +221,20 @@ vframes = 15
 libraries = {
 "": SubResource("AnimationLibrary_rr8tc")
 }
+
+[node name="Title Name" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_4sk2f")
+bus = &"Title Name"
+
+[node name="Title Name Trigger" type="Node2D" parent="."]
+script = ExtResource("6_u3knw")
+
+[node name="Title Theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_3yr75")
+bus = &"Title Theme"
+
+[node name="Title Theme Trigger" type="Node2D" parent="Title Theme"]
+script = ExtResource("8_doe2v")
 
 [connection signal="pressed" from="Title Screen/Button" to="Title Screen/Button" method="_on_pressed"]
 [connection signal="animation_finished" from="Title Screen/AnimationPlayer" to="Title Screen" method="_on_animation_player_animation_finished"]
