@@ -30,6 +30,7 @@ func _physics_process(delta):
 	if(!is_over):
 		if(health >= 0.0):
 			move_dir = Input.get_vector("Left", "Right", "Up", "Down")
+			move_dir = move_dir.normalized()
 			graphics.look_at(get_global_mouse_position())
 			velocity = move_dir * move_speed
 			

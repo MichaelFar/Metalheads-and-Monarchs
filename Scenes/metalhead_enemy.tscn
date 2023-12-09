@@ -146,6 +146,7 @@ libraries = {
 }
 
 [node name="PowerUpContainer" parent="." instance=ExtResource("6_inx7u")]
+target = 100
 
 [node name="blood_particles" parent="." instance=ExtResource("7_rg2od")]
 emitting = false

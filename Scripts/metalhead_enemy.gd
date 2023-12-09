@@ -143,11 +143,12 @@ func knock_back(area, destinationNode = null):
 
 func _on_hitbox_area_entered(area):
 	if(area != null):
-		if(area.owner.has_method("get_node_type")):
-			if(area.owner.get_node_type() == 'enemy'):
-				print("Area owner entered is " + area.owner.name + " and area name is " + area.name)
-				if(area.name == "Hurtbox"):
-					area.owner.knock_back(HitBox, self)
+		if(area.owner != null):
+			if(area.owner.has_method("get_node_type")):
+				if(area.owner.get_node_type() == 'enemy'):
+					print("Area owner entered is " + area.owner.name + " and area name is " + area.name)
+					if(area.name == "Hurtbox"):
+						area.owner.knock_back(HitBox, self)
 func die():
 	print("Will die")
 	if(legs != null):

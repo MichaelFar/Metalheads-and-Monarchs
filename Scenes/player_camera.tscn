@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://5a67378688kx"]
+
+[ext_resource type="Script" path="res://Scripts/player_camera.gd" id="1_ec3l1"]
+[ext_resource type="PackedScene" uid="uid://bo7atiusshn2u" path="res://Scenes/screen_text.tscn" id="1_ppdhi"]
+
+[node name="PlayerCamera" type="Camera2D"]
+process_callback = 0
+script = ExtResource("1_ec3l1")
+
+[node name="ScreenText" parent="." instance=ExtResource("1_ppdhi")]
+offset_top = 20.0
+offset_bottom = 20.0

@@ -37,10 +37,11 @@ melee = NodePath("melee")
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("CircleShape2D_ckaxx")
 
-[node name="Graphics" type="Node2D" parent="."]
+[node name="Graphics" type="CharacterBody2D" parent="."]
 
 [node name="visual_switcher" parent="Graphics" node_paths=PackedStringArray("weapon_switcher", "gun_offset") instance=ExtResource("13_g7v4m")]
 use_parent_material = true
+motion_mode = 1
 weapon_switcher = NodePath("../../Playerweapon_changer")
 gun_offset = NodePath("../Gun_offset")
 

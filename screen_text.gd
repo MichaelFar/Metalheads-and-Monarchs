@@ -64,6 +64,7 @@ func _on_timer_timeout():
 			Globals.spawner.spawnMax += 1
 		if ((maxTime - totalTimeSec) % 60 == 0):
 			for i in range(metal_head_count):
+				
 				Globals.spawner.spawn_metal_head()
 			metal_head_count += 1
 		if ((enemyScore + timeScore) % upgrade_target == 0 && enemyScore + timeScore != 0):
