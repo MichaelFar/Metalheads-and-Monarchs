@@ -1,10 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://ua7xvxetvysi"]
+[gd_scene load_steps=5 format=3 uid="uid://ua7xvxetvysi"]
 
 [ext_resource type="PackedScene" uid="uid://df2bhnlb7vf2d" path="res://Scenes/powerup.tscn" id="1_p3cpj"]
 [ext_resource type="Material" uid="uid://bhvf65kb6agss" path="res://Shaders/vampire.tres" id="2_3shw3"]
+[ext_resource type="Shader" path="res://Shaders/player.gdshader" id="3_lwbgv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g4jqe"]
+resource_local_to_scene = true
+shader = ExtResource("3_lwbgv")
+shader_parameter/speed = 1.0
+shader_parameter/tint = Color(1, 0, 0.792157, 1)
+shader_parameter/span = 1.0
+shader_parameter/start_time = 0.0
+shader_parameter/applied = true
 
 [node name="vampire" node_paths=PackedStringArray("power_up_shape") instance=ExtResource("1_p3cpj")]
 material = ExtResource("2_3shw3")
 true_name = "vampire"
 power_up_shape = NodePath("powerup shape")
 active_time = 3.0
+
+[node name="icon" parent="." index="2"]
+material = SubResource("ShaderMaterial_g4jqe")
+
+[node name="Vampire Sound Trigger" parent="." index="4" node_paths=PackedStringArray("sound")]
+sound = NodePath("../Vampire2")

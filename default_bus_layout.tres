@@ -1,15 +1,12 @@
-[gd_resource type="AudioBusLayout" load_steps=12 format=3 uid="uid://c8jfwulu2bkgn"]
+[gd_resource type="AudioBusLayout" load_steps=13 format=3 uid="uid://c8jfwulu2bkgn"]
 
 [sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_rkxr2"]
 resource_name = "Distortion"
 drive = 0.57
 
-
 [sub_resource type="AudioEffectPhaser" id="AudioEffectPhaser_siff3"]
 resource_name = "Phaser"
-
-[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_c6h8m"]
-resource_name = "Reverb"
+feedback = 0.2
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_x8h5o"]
 resource_name = "Reverb"
@@ -30,6 +27,11 @@ pitch_scale = 1.5
 [sub_resource type="AudioEffectPitchShift" id="AudioEffectPitchShift_guncm"]
 resource_name = "PitchShift"
 pitch_scale = 0.6
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_wcjjt"]
+resource_name = "Reverb"
+damping = 1.0
+dry = 0.61
 
 [sub_resource type="AudioEffectAmplify" id="AudioEffectAmplify_tjidv"]
 resource_name = "Amplify"
@@ -53,10 +55,10 @@ bus/1/name = &"Guns"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
-bus/1/volume_db = -2.91905
+bus/1/volume_db = -5.93425
 bus/1/send = &"Master"
-bus/1/effect/0/effect = SubResource("AudioEffectEQ_w0xa6")
-bus/1/effect/0/enabled = false
+bus/1/effect/0/effect = SubResource("AudioEffectDistortion_rkxr2")
+bus/1/effect/0/enabled = true
 bus/2/name = &"Shawn"
 bus/2/solo = false
 bus/2/mute = false
@@ -89,10 +91,12 @@ bus/5/name = &"Spider Sound"
 bus/5/solo = false
 bus/5/mute = false
 bus/5/bypass_fx = false
-bus/5/volume_db = 0.0
+bus/5/volume_db = -2.3125
 bus/5/send = &"Master"
 bus/5/effect/0/effect = SubResource("AudioEffectPitchShift_guncm")
 bus/5/effect/0/enabled = true
+bus/5/effect/1/effect = SubResource("AudioEffectReverb_wcjjt")
+bus/5/effect/1/enabled = true
 bus/6/name = &"Vampire"
 bus/6/solo = false
 bus/6/mute = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bo7atiusshn2u"]
+[gd_scene load_steps=13 format=3 uid="uid://bo7atiusshn2u"]
 
 [ext_resource type="Script" path="res://screen_text.gd" id="1_d34rc"]
 [ext_resource type="PackedScene" uid="uid://bsr3kjhbg6ugv" path="res://Scenes/PistolDMG_upgrade_options.tscn" id="2_fdvia"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dy41a77wngh5g" path="res://Scenes/shotgunDMG_upgrade_options.tscn" id="3_uiagq"]
 [ext_resource type="AudioStream" uid="uid://begf4cp33rexl" path="res://Audio/Game Over.wav" id="5_ljjgf"]
 [ext_resource type="AudioStream" uid="uid://dutkm3sl8glki" path="res://Audio/Upgrade.wav" id="6_pam7w"]
+[ext_resource type="PackedScene" uid="uid://xkcsrsryovrc" path="res://restart_screen.tscn" id="9_t0pmh"]
 
 [sub_resource type="SystemFont" id="SystemFont_7kyti"]
 
@@ -22,7 +23,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="ScreenText" type="Control" node_paths=PackedStringArray("game_timer", "text_node", "upgradePanel", "upgradeLabel", "upgradeOptions")]
+[node name="ScreenText" type="Control" node_paths=PackedStringArray("game_timer", "text_node", "upgradePanel", "upgradeLabel", "upgradeOptions", "RestartScreen")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,6 +37,7 @@ text_node = NodePath("RichTextLabel")
 upgradePanel = NodePath("Panel")
 upgradeLabel = NodePath("Panel/lbl_upgrade")
 upgradeOptions = NodePath("UpgradeOptions")
+RestartScreen = NodePath("RestartScreen")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
@@ -77,5 +79,12 @@ bus = &"Game Over"
 [node name="Upgrade" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_pam7w")
 bus = &"Upgrade"
+
+[node name="RestartScreen" parent="." instance=ExtResource("9_t0pmh")]
+layout_mode = 1
+offset_left = 453.0
+offset_top = 577.0
+offset_right = -454.0
+offset_bottom = 71.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

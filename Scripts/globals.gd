@@ -34,4 +34,5 @@ func _process(delta):
 	if(Input.is_action_just_released('restart')):
 		reset_game()
 	if(Input.is_action_just_released('upgrade_test')):
-		game_timer.upgrade_begin()
+		pass
+		#game_timer.upgrade_begin()

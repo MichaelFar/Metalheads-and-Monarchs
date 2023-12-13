@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://q4ihp0pfa5a3"]
 
 [ext_resource type="Script" path="res://Scripts/visual_switcher.gd" id="1_birie"]
-[ext_resource type="Texture2D" uid="uid://dunili5j866g4" path="res://Sprites/Monarch Base SMG Final 11_13.png" id="1_knq04"]
-[ext_resource type="Texture2D" uid="uid://c42t456outohl" path="res://Sprites/Monarch Base Shotgun Final 11_12.png" id="2_dem2u"]
-[ext_resource type="Texture2D" uid="uid://ct1rm65xsf7hb" path="res://Sprites/Monarch Base Pistol Final 11_12.png" id="3_k2l5a"]
+[ext_resource type="Texture2D" uid="uid://c6hrjtxtqoldl" path="res://Sprites/Monarch Gold Pistol Final .png" id="2_v16tp"]
+[ext_resource type="Texture2D" uid="uid://2bmvffkem8r" path="res://Sprites/Monarch Gold SMG Final.png" id="3_n24of"]
+[ext_resource type="Texture2D" uid="uid://dobnv2rchpm21" path="res://Sprites/Monarch Gold Shotgun Final .png" id="4_tfti4"]
 
 [sub_resource type="Animation" id="Animation_mfgnf"]
 length = 0.001
@@ -97,7 +97,7 @@ animation_player = NodePath("AnimationPlayer")
 [node name="MonarchBasePistolFinal1112" type="Sprite2D" parent="."]
 texture_filter = 1
 use_parent_material = true
-texture = ExtResource("3_k2l5a")
+texture = ExtResource("2_v16tp")
 offset = Vector2(13, 0)
 hframes = 4
 vframes = 2
@@ -106,7 +106,7 @@ frame = 3
 [node name="MonarchBaseSmgFinal1113" type="Sprite2D" parent="."]
 texture_filter = 1
 use_parent_material = true
-texture = ExtResource("1_knq04")
+texture = ExtResource("3_n24of")
 offset = Vector2(20, 0)
 hframes = 2
 vframes = 2
@@ -115,8 +115,8 @@ frame = 3
 [node name="MonarchBaseShotgunFinal1112" type="Sprite2D" parent="."]
 texture_filter = 1
 use_parent_material = true
-texture = ExtResource("2_dem2u")
-offset = Vector2(18, 0)
+texture = ExtResource("4_tfti4")
+offset = Vector2(20, 0)
 hframes = 2
 vframes = 2
 frame = 3

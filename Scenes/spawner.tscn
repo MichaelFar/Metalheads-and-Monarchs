@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmjjbqwr57nge"]
+[gd_scene load_steps=5 format=3 uid="uid://bmjjbqwr57nge"]
 
 [ext_resource type="Script" path="res://Scripts/spawner.gd" id="1_t4l1l"]
 [ext_resource type="PackedScene" uid="uid://dsxko2cc242t4" path="res://Scenes/chase_ai.tscn" id="2_aoumf"]
+[ext_resource type="AudioStream" uid="uid://caahhwdk4vg8m" path="res://Audio/Spider Sound.wav" id="3_4bksj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_17mgg"]
 radius = 10.198
@@ -19,5 +20,10 @@ debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
 resources = [PackedStringArray("chase_ai"), [ExtResource("2_aoumf")]]
+
+[node name="Spider Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4bksj")
+volume_db = -6.559
+bus = &"Spider Sound"
 
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

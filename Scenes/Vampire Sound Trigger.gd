@@ -1,3 +1,4 @@
 extends Node2D
-
-func _ready(): $"../Vampire".play()
+@export var sound : AudioStreamPlayer
+func _ready(): 
+	sound.play()

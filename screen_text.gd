@@ -7,6 +7,7 @@ extends Control
 @export var upgradePanel : Panel
 @export var upgradeLabel : Label
 @export var upgradeOptions : ResourcePreloader
+@export var RestartScreen : VBoxContainer
 
 var upgradePositions = []
 
@@ -31,7 +32,7 @@ func _ready():
 	text_node.text = update_text()
 	update_placement()
 	get_viewport().size_changed.connect(update_placement)
-	
+	RestartScreen.hide()
 	upgradePanel.hide()
 	
 func _process(delta):
@@ -96,23 +97,18 @@ func time_score():
 
 func game_over():
 	
+	
 	playerDied = !endGame
 	endGame = true
 	var totalScoreString = "\n" + "[center]Total Score is " + str((((maxTime - totalTimeSec) / 10) * 100) + totalEnemiesDefeated * 100) + "[/center]"
 	text_node.text = "GAME OVER \n Your final time was: " + update_text() + totalScoreString
 	
 	$"Game Over".play()
-	
+	RestartScreen.show()
 	if(!playerDied):
 		
 		text_node.text = "GAME COMPLETE!!! \n Total Enemies Defeated: " + str(totalEnemiesDefeated) + totalScoreString
 	
-	else:
-		
-		for i in range(3):
-			
-			Globals.spawner.spawn_enemies()
-			
 func update_placement():
 	
 	position.y = get_viewport_rect().size.y / -2.0

@@ -18,7 +18,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_released("spawn"):
-		spawn_enemies()
+		pass
+		#spawn_enemies()
 
 
 func update_spawn_circle():
@@ -32,6 +33,7 @@ func update_spawn_circle():
 func spawn_enemies():
 	var randObj = RandomNumberGenerator.new()
 	if(Globals.activeEnemies.size() < 30):
+		$"Spider Sound".play()
 		for i in enemy_list:
 			
 			var resource = enemyPreloader.get_resource(i)
